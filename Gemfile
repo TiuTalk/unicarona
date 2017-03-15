@@ -26,3 +26,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring-commands-rspec', '~> 1.0'
 end
+
+group :test do
+  gem 'simplecov', '~> 0.13', require: false
+end
