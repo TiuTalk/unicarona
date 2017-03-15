@@ -1,24 +1,4 @@
-# README
+# UniCarona
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[![CircleCI](https://circleci.com/gh/TiuTalk/unicarona.svg?style=svg&circle-token=f704c0965eb1b80e23aa5d692e4a3201bb17af65)](https://circleci.com/gh/TiuTalk/unicarona)
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
