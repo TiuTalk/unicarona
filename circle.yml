@@ -1,6 +1,0 @@
-machine:
-  timezone: America/Sao_Paulo
-
-dependencies:
-  pre:
-    - gem install bundler
