@@ -1,5 +1,7 @@
 {
   "name": "unicarona",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bulma": "^0.3.2"
+  }
 }
