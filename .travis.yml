@@ -2,3 +2,6 @@ language: ruby
 cache: bundler
 notifications:
   email: false
+before_script:
+  - psql -c 'CREATE DATABASE unicarona_test' -U postgres
+  - bundle exec rake db:test:prepare
