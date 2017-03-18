@@ -1,0 +1,32 @@
+<div class="container">
+  <nav class="nav">
+    <div class="nav-left">
+      <%= link_to image_tag('http://placehold.it/100x25?text=logo', alt: t('application.title')), root_path, class: 'nav-item' %>
+    </div>
+
+    <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
+    <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
+    <span class="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+
+    <!-- This "nav-menu" is hidden on mobile -->
+    <!-- Add the modifier "is-active" to display it on mobile -->
+    <div class="nav-right nav-menu">
+      <%= link_to t('pages.how_it_works.title'), '#', class: 'nav-item' %>
+
+      <span class="nav-item">
+        <%= link_to '#', class: 'button' do %>
+          <span class="icon"><%= fa_icon('sign-in') %></span>
+          <span><%= t('.sign_in') %></span>
+        <% end %>
+        <%= link_to '#', class: 'button is-primary' do %>
+          <span class="icon"><%= fa_icon('user-plus') %></span>
+          <span><%= t('.register') %></span>
+        <% end %>
+      </span>
+    </div>
+  </nav>
+</div>

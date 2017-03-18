@@ -1,0 +1,9 @@
+pt-BR:
+  application:
+    title: Carona
+    header:
+      sign_in: Entrar
+      register: Criar conta
+  pages:
+    how_it_works:
+      title: Como funciona?
