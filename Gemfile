@@ -14,6 +14,7 @@ gem 'puma', '~> 3.7'
 gem 'sass-rails', github: "rails/sass-rails"
 gem 'uglifier', '>= 1.3.0'
 gem 'turbolinks', '~> 5'
+gem 'font-awesome-rails', '~> 4.7'
 
 group :development, :test do
   gem 'pry-rails', '~> 0.3'
