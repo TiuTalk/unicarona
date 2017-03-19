@@ -16,6 +16,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'turbolinks', '~> 5'
 gem 'font-awesome-rails', '~> 4.7'
 
+# Models
+gem 'bcrypt', '~> 3.1'
+
 group :development, :test do
   gem 'pry-rails', '~> 0.3'
   gem 'rspec-rails', '~> 3.5'
