@@ -19,6 +19,7 @@ gem 'font-awesome-rails', '~> 4.7'
 # Models
 gem 'bcrypt', '~> 3.1'
 gem 'phonelib', '~> 0.6'
+gem 'simple_form', '~> 3.4'
 
 group :development, :test do
   gem 'pry-rails', '~> 0.3'
