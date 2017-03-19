@@ -15,18 +15,35 @@
     <!-- This "nav-menu" is hidden on mobile -->
     <!-- Add the modifier "is-active" to display it on mobile -->
     <div class="nav-right nav-menu">
-      <%= link_to t('pages.how_it_works.title'), '#', class: 'nav-item' %>
+      <% if signed_in? %>
+        <%= link_to 'Minhas caronas', '#', class: 'nav-item' %>
+        <%= link_to 'Minhas rotas', '#', class: 'nav-item' %>
 
-      <span class="nav-item">
-        <%= link_to '#', class: 'button' do %>
-          <span class="icon"><%= fa_icon('sign-in') %></span>
-          <span><%= t('.sign_in') %></span>
-        <% end %>
-        <%= link_to '#', class: 'button is-primary' do %>
-          <span class="icon"><%= fa_icon('user-plus') %></span>
-          <span><%= t('.register') %></span>
-        <% end %>
-      </span>
+        <span class="nav-item">
+          <%= link_to '#', class: 'button' do %>
+            <span class="icon"><%= fa_icon('user') %></span>
+            <%= content_tag(:span, current_user.name) %>
+          <% end %>
+
+          <%= link_to sign_out_path, method: :delete, class: 'button is-outlined is-danger' do %>
+            <span class="icon"><%= fa_icon('sign-out') %></span>
+            <span><%= t('layouts.application.sign_out') %></span>
+          <% end %>
+        </span>
+      <% else %>
+        <%= link_to t('pages.how_it_works.title'), '#', class: 'nav-item' %>
+
+        <span class="nav-item">
+          <%= link_to sign_in_path, class: 'button' do %>
+            <span class="icon"><%= fa_icon('sign-in') %></span>
+            <span><%= t('layouts.application.sign_in') %></span>
+          <% end %>
+          <%= link_to sign_up_path, class: 'button is-primary' do %>
+            <span class="icon"><%= fa_icon('user-plus') %></span>
+            <span><%= t('helpers.submit.user.create') %></span>
+          <% end %>
+        </span>
+      <% end %>
     </div>
   </nav>
 </div>
