@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+ActiveRecord::Migration.say_with_time 'Creating users...' do
+  User.create!(name: 'Usuário Teste', email: 'user@example.com', password: 'password')
+  User.count
+end if User.count.zero?

@@ -1,0 +1,16 @@
+pt-BR:
+  activerecord:
+    models:
+      user:
+        one: Usuário
+        other: Usuários
+    attributes:
+      user:
+        name: Nome
+        email: Email
+        password: Senha
+        password_digest: Senha
+        password_confirmation: Confirmação de senha
+        phone: Celular
+        phone_confirmation_code: Código de confirmação
+        phone_confirmed: Celular confirmado?
