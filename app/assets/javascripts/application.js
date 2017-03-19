@@ -18,3 +18,7 @@
 $(document).on('click', '.nav-toggle', function() {
   $('.nav-menu').toggleClass('is-active');
 });
+
+$(document).on('click', '.notification .delete', function() {
+  $(this).parent().remove();
+});
