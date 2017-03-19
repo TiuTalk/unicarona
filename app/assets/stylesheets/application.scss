@@ -9,6 +9,4 @@
 .notification.is-alert { @extend .is-warning }
 
 // Form
-form .control:not(:last-child) { margin-bottom: 0 }
-form .field:not(:last-child) { margin-bottom: 0.75rem }
 form .input[aria-invalid="true"] { @extend .is-danger }
