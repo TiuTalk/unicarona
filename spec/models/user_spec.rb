@@ -18,10 +18,6 @@ RSpec.describe User, type: :model do
     it { is_expected.to_not allow_value('21223344a', '33445566').for(:phone) }
   end
 
-  describe 'secure password' do
-    it { is_expected.to have_secure_password }
-  end
-
   describe 'callbacks' do
     it 'normalize email' do
       user = build(:user, email: 'SOMETHING@gmail.com')
