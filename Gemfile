@@ -22,6 +22,8 @@ gem 'bcrypt', '~> 3.1'
 group :development, :test do
   gem 'pry-rails', '~> 0.3'
   gem 'rspec-rails', '~> 3.5'
+  gem 'factory_girl_rails', '~> 4.8'
+  gem 'ffaker', '~> 2.5'
 end
 
 group :development do
