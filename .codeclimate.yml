@@ -1,0 +1,37 @@
+engines:
+  rubocop:
+    enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+        ruby:
+          mass_threshold: 18
+  brakeman:
+    enabled: true
+  bundler-audit:
+    enabled: true
+  flog:
+    enabled: true
+  reek:
+    enabled: true
+  fixme:
+    enabled: true
+ratings: # customize
+  paths:
+    - app/**/*
+    - lib/**/*
+exclude_paths: # customize
+  - .bundle/
+  - app/assets/fonts/
+  - app/assets/images/
+  - app/assets/javascripts/vendor/
+  - app/assets/stylesheets/vendor/
+  - bin/rails
+  - bin/rake
+  - db/
+  - doc/
+  - files/
+  - public/
+  - spec/
+  - tmp/
