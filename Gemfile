@@ -20,6 +20,7 @@ gem 'font-awesome-rails', '~> 4.7'
 gem 'bcrypt', '~> 3.1'
 gem 'phonelib', '~> 0.6'
 gem 'simple_form', '~> 3.4'
+gem 'clearance', '~> 1.16'
 
 group :development, :test do
   gem 'pry-rails', '~> 0.3'
@@ -38,4 +39,5 @@ end
 group :test do
   gem 'simplecov', '~> 0.13', require: false
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'capybara', '~> 2.13'
 end
