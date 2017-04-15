@@ -9,4 +9,9 @@ Rails.application.routes.draw do
   resources :users, only: [:create] do
     resource :password, controller: "clearance/passwords", only: [:create, :edit, :update]
   end
+
+  resources :phone_confirmations, only: [:new, :create] do
+    post :confirm, on: :collection
+    get :confirm, on: :collection
+  end
 end

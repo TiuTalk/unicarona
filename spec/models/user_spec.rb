@@ -31,4 +31,37 @@ RSpec.describe User, type: :model do
       expect { user.save! }.to change(user, :phone).to('21933441235')
     end
   end
+
+  describe '#confirm_phone!' do
+    subject(:user) { create(:user, phone: '(21) 988659250') }
+
+    it 'generate a confirmation code and send the SMS to the user' do
+      messages = double(create: true)
+      twilio_client = double(Twilio::REST::Client, messages: messages)
+
+      expect(Twilio::REST::Client).to receive(:new).and_return(twilio_client)
+      expect(messages).to receive(:create).with(from: Rails.application.secrets.twilio_phone_number, to: '+5521988659250', body: /Utilize o código/)
+
+      expect { user.confirm_phone! }.to change { user.reload.phone_confirmation_code }
+    end
+  end
+
+  describe '#confirm_phone?' do
+    subject(:user) { create(:user, phone_confirmed: false, phone_confirmation_code: '123456') }
+
+    context 'with valid code' do
+      it 'confirm the user phone number' do
+        expect { user.confirm_phone?('123456') }.to change(user, :phone_confirmed).to(true)
+        expect(user.phone_confirmation_code).to be_nil
+      end
+    end
+
+    context 'with invalid code' do
+      it 'do not confirm the user phone and mark it as invalid' do
+        expect { user.confirm_phone?('23456') }.to_not change(user, :phone_confirmed).from(false)
+        expect(user.phone_confirmation_code).to be_present
+        expect(user.errors).to_not be_empty
+      end
+    end
+  end
 end

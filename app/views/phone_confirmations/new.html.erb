@@ -1,0 +1,18 @@
+<div class="section">
+  <div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+      <h3 class="title is-3">Confirmação de telefone</h3>
+      <h4 class="subtitle">Lorem ipsum</h4>
+
+      <p>Um código será enviado para seu telefone via SMS.</p>
+
+      <%= simple_form_for(current_user, url: phone_confirmations_path, method: :post) do |f| %>
+        <%= f.input :phone, placeholder: '(21) 99988-6644' %>
+
+        <div class="field is-grouped">
+          <span class="control"><%= f.button :submit, 'Continuar', class: 'is-primary' %></span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
