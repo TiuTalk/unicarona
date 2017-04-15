@@ -42,4 +42,6 @@ group :test do
   gem 'simplecov', '~> 0.13', require: false
   gem 'shoulda-matchers', '~> 3.1'
   gem 'capybara', '~> 2.13'
+  gem 'vcr', '~> 3.0'
+  gem 'webmock', '~> 3.0'
 end
