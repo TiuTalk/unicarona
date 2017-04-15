@@ -21,6 +21,9 @@ gem 'phonelib', '~> 0.6'
 gem 'simple_form', '~> 3.4'
 gem 'clearance', '~> 1.16'
 
+# Clients
+gem 'twilio-ruby', '~> 4.13'
+
 group :development, :test do
   gem 'pry-rails', '~> 0.3'
   gem 'rspec-rails', '~> 3.5'
