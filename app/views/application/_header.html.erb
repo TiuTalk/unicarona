@@ -17,7 +17,7 @@
     <div class="nav-right nav-menu">
       <% if signed_in? %>
         <%= link_to 'Minhas caronas', '#', class: 'nav-item' %>
-        <%= link_to 'Minhas rotas', '#', class: 'nav-item' %>
+        <%= link_to 'Minhas rotas', routes_path, class: 'nav-item' %>
 
         <span class="nav-item">
           <%= link_to '#', class: 'button' do %>

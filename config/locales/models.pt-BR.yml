@@ -4,6 +4,9 @@ pt-BR:
       user:
         one: Usuário
         other: Usuários
+      route:
+        one: Rota
+        other: Rotas
     attributes:
       user:
         name: Nome
@@ -14,3 +17,6 @@ pt-BR:
         phone: Celular
         phone_confirmation_code: Código de confirmação
         phone_confirmed: Celular confirmado?
+      route:
+        origin: Endereço de origem
+        destination: Endereço de destino

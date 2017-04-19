@@ -14,4 +14,6 @@ Rails.application.routes.draw do
     post :confirm, on: :collection
     get :confirm, on: :collection
   end
+
+  resources :routes, path: 'rotas'
 end
