@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe 'associations'
+  describe 'associations' do
+    it { is_expected.to have_many(:routes).inverse_of(:user) }
+  end
 
   describe 'validations' do
     subject { build(:user) }

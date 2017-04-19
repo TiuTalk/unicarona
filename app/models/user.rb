@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   include Clearance::User
 
+  # Associations
+  has_many :routes, inverse_of: :user
+
   # Validations
   validates :name, :email, presence: true
   validates :password, length: { minimum: 8 }, confirmation: true, on: :create
