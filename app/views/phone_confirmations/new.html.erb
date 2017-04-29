@@ -6,7 +6,7 @@
 
       <p>Um código será enviado para seu telefone via SMS.</p>
 
-      <%= simple_form_for(current_user, url: phone_confirmations_path, method: :post) do |f| %>
+      <%= simple_form_for(current_user, url: phone_confirmations_path, method: :post, html: { class: 'form-horizontal' }) do |f| %>
         <%= f.input :phone, placeholder: '(21) 99988-6644' %>
 
         <div class="field is-grouped">

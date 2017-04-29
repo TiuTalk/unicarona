@@ -4,12 +4,9 @@
       <h3 class="title is-3">Cadastro</h3>
       <h4 class="subtitle">Lorem ipsum</h4>
 
-      <%= simple_form_for(@user) do |f| %>
+      <%= simple_form_for(@user, html: { class: 'form-horizontal' }) do |f| %>
         <%= render 'form', f: f %>
-
-        <div class="field is-grouped">
-          <span class="control"><%= f.button :submit, 'Criar conta', class: 'is-primary' %></span>
-        </div>
+        <%= f.button :submit, 'Criar conta', class: 'btn btn-primary' %>
       <% end %>
     </div>
   </div>

@@ -2,10 +2,23 @@
 # yarn lockfile v1
 
 
-bulma@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.4.0.tgz#2a0b07555d53bb4eb17861e3159e2616c21dfa6c"
+bootstrap@4.0.0-alpha.6:
+  version "4.0.0-alpha.6"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.0.0-alpha.6.tgz#4f54dd33ac0deac3b28407bc2df7ec608869c9c8"
+  dependencies:
+    jquery ">=1.9.1"
+    tether "^1.4.0"
 
-jquery@^3.2.0:
+jquery-ujs@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/jquery-ujs/-/jquery-ujs-1.2.2.tgz#6a8ef1020e6b6dda385b90a4bddc128c21c56397"
+  dependencies:
+    jquery ">=1.8.0"
+
+jquery@>=1.8.0, jquery@>=1.9.1:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.2.0.tgz#3bdbba66e1eee0785532dddadb0e0d2521ca584b"
+
+tether@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/tether/-/tether-1.4.0.tgz#0f9fa171f75bf58485d8149e94799d7ae74d1c1a"

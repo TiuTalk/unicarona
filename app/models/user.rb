@@ -29,6 +29,10 @@ class User < ApplicationRecord
     end
   end
 
+  def avatar(size: 100)
+    "https://api.adorable.io/avatars/#{size}/#{email}"
+  end
+
   private
 
   def normalize_phone

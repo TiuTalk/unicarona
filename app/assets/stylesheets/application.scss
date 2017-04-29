@@ -1,12 +1,10 @@
-@import "bulma/bulma";
+@import "bootstrap/dist/css/bootstrap";
 @import "font-awesome";
 
 // Logo
 .nav-item img { max-height: 1.45em }
 
 // Flash messages
-.notification.is-notice { @extend .is-primary }
-.notification.is-alert { @extend .is-warning }
+.notification.alert-notice { @extend .alert-success }
+.notification.alert-alert { @extend .alert-warning }
 
-// Form
-form .input[aria-invalid="true"] { @extend .is-danger }
