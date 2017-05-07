@@ -6,19 +6,19 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.1.0.rc1'
+gem 'rails', '~> 5.1.0'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
 
 # Assets
-gem 'sass-rails', github: "rails/sass-rails"
+gem 'sass-rails', '~> 5.0.6'
 gem 'uglifier', '>= 1.3.0'
 gem 'turbolinks', '~> 5'
 gem 'font-awesome-rails', '~> 4.7'
 
 # Models
 gem 'phonelib', '~> 0.6'
-gem 'simple_form', '~> 3.4'
+gem 'simple_form', github: 'elsurudo/simple_form', branch: 'rails-5.1.0'
 gem 'clearance', '~> 1.16'
 
 # Clients
