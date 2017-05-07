@@ -2,27 +2,47 @@ class Route < ApplicationRecord
   # Associations
   belongs_to :user, inverse_of: :routes
 
+  # Scopes
+  scope :enabled, -> { where(enabled: true) }
+
   # Validations
-  validates :origin, :destination, :origin_latitude, :origin_longitude, :destination_latitude, :destination_longitude, presence: true
+  validates :origin, :destination, :hour, :weekdays, :origin_latitude, :origin_longitude, :destination_latitude, :destination_longitude, presence: true
 
   # Callbacks
   before_validation :geocode_origin, :geocode_destination
 
+  # Serialization
+  serialize :weekdays, Array
+
+  def distance
+    Geocoder::Calculations.distance_between(origin_coordinates, destination_coordinates).round(2)
+  end
+
   private
 
-  def geocode_origin
-    return unless origin.present?
+  def origin_coordinates
+    [origin_latitude, origin_longitude]
+  end
 
-    # TODO: Replace this with the geocoder gem
-    self.origin_latitude = rand(1.0..2.0)
-    self.origin_longitude = rand(1.0..2.0)
+  def destination_coordinates
+    [destination_latitude, destination_longitude]
+  end
+
+  def geocode_origin
+    return unless origin.present? && origin_changed? && origin_latitude.blank?
+
+    lat, lon = Geocoder.coordinates(origin)
+
+    self.origin_latitude = lat
+    self.origin_longitude = lon
   end
 
   def geocode_destination
-    return unless destination.present?
+    return unless destination.present? && destination_changed? && destination_latitude.blank?
 
-    # TODO: Replace this with the geocoder gem
-    self.destination_latitude = rand(1.0..2.0)
-    self.destination_longitude = rand(1.0..2.0)
+    lat, lon = Geocoder.coordinates(destination)
+
+    self.destination_latitude = lat
+    self.destination_longitude = lon
   end
 end

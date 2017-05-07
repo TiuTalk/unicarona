@@ -20,3 +20,6 @@ pt-BR:
       route:
         origin: Endereço de origem
         destination: Endereço de destino
+        weekdays: Dias da semana
+        hour: Horário de saída
+        enabled: Disponível para carona?
