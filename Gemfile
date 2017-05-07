@@ -20,6 +20,7 @@ gem 'font-awesome-rails', '~> 4.7'
 gem 'phonelib', '~> 0.6'
 gem 'simple_form', github: 'elsurudo/simple_form', branch: 'rails-5.1.0'
 gem 'clearance', '~> 1.16'
+gem 'geocoder', '~> 1.4'
 
 # Clients
 gem 'twilio-ruby', '~> 4.13'
