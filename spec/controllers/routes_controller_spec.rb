@@ -4,10 +4,15 @@ RSpec.describe RoutesController, type: :controller do
   let(:user) { create(:user) }
   let!(:route) { create(:route, user: user) }
 
-  let(:valid_attributes) { attributes_for(:route).slice(:origin, :destination) }
+  let(:valid_attributes) { attributes_for(:route).slice(:origin, :destination, :weekdays, :hour) }
   let(:invalid_attributes) { valid_attributes.merge(destination: '') }
 
   before { sign_in_as(user) }
+
+  before do
+    coordinates = [FFaker::Geolocation.lat, FFaker::Geolocation.lng]
+    allow(Geocoder).to receive(:coordinates).and_return(coordinates)
+  end
 
   describe "GET #index" do
     it "assigns all routes as @routes" do
@@ -20,6 +25,11 @@ RSpec.describe RoutesController, type: :controller do
     it "assigns the requested route as @route" do
       get :show, params: {id: route.to_param}
       expect(assigns(:route)).to eq(route)
+    end
+
+    it 'redirect to home with invalid route' do
+      get :show, params: { id: 0 }
+      expect(response).to redirect_to(root_path)
     end
   end
 
@@ -53,7 +63,7 @@ RSpec.describe RoutesController, type: :controller do
 
       it "redirects to the created route" do
         post :create, params: {route: valid_attributes}
-        expect(response).to redirect_to(Route.last)
+        expect(response).to redirect_to(routes_path)
       end
     end
 
@@ -87,7 +97,7 @@ RSpec.describe RoutesController, type: :controller do
 
       it "redirects to the route" do
         put :update, params: {id: route.to_param, route: valid_attributes}
-        expect(response).to redirect_to(route)
+        expect(response).to redirect_to(routes_path)
       end
     end
 

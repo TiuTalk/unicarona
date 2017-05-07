@@ -7,7 +7,7 @@ pt-BR:
     failure_when_forbidden: Por favor, verifique a URL, ou tente enviar o formulário novamente.
     failure_after_update: Senha não pode ficar em branco.
     failure_after_create: Email ou senha incorretos. Por favor, tente novamente.
-    failure_when_access_denied: Por favor, efetue login.
+    failure_when_not_signed_in: Por favor, efetue login.
   helpers:
     submit:
       password:

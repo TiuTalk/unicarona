@@ -1,10 +1,21 @@
 @import "bootstrap/dist/css/bootstrap";
 @import "font-awesome";
 
-// Logo
+// Header
+.navbar { margin-bottom: 1em }
 .nav-item img { max-height: 1.45em }
 
 // Flash messages
-.notification.alert-notice { @extend .alert-success }
-.notification.alert-alert { @extend .alert-warning }
+.alert.alert-notice { @extend .alert-success }
+.alert.alert-alert { @extend .alert-warning }
+
+// Blank slate
+.blank-slate {
+  text-align: center;
+  margin: 5em 0;
+  color: #333;
+
+  .fa { font-size: 4em; margin-bottom: .3em; opacity: .5 }
+  .btn { margin-top: .5em }
+}
 

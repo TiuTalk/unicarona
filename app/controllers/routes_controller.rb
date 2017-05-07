@@ -1,12 +1,17 @@
 class RoutesController < ApplicationController
-  before_action :require_login
-  before_action :set_route, only: [:show, :edit, :update, :destroy]
+  before_action :require_login, except: [:show]
+  before_action :set_route, only: [:edit, :update, :destroy]
+
+  rescue_from ActiveRecord::RecordNotFound do
+    redirect_to root_path, alert: 'Rota não encontrada'
+  end
 
   def index
     @routes = current_user.routes.all
   end
 
   def show
+    @route = Route.find(params[:id])
   end
 
   def new
@@ -20,7 +25,7 @@ class RoutesController < ApplicationController
     @route = current_user.routes.new(route_params)
 
     if @route.save
-      redirect_to @route, notice: 'Route was successfully created.'
+      redirect_to routes_path, notice: 'Rota cadastrada com sucesso!'
     else
       render :new
     end
@@ -28,7 +33,7 @@ class RoutesController < ApplicationController
 
   def update
     if @route.update(route_params)
-      redirect_to @route, notice: 'Route was successfully updated.'
+      redirect_to routes_path, notice: 'Rota atualizada com sucesso!'
     else
       render :edit
     end
@@ -36,7 +41,7 @@ class RoutesController < ApplicationController
 
   def destroy
     @route.destroy
-    redirect_to routes_url, notice: 'Route was successfully destroyed.'
+    redirect_to routes_url, notice: 'Rota removida com sucesso!'
   end
 
   private
@@ -46,6 +51,6 @@ class RoutesController < ApplicationController
   end
 
   def route_params
-    params.require(:route).permit(:origin, :destination)
+    params.require(:route).permit(:origin, :destination, :hour, :enabled, weekdays: [])
   end
 end

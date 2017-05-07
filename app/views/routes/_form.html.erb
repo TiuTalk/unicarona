@@ -2,11 +2,30 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :origin, input_html: { data: { autocomplete: :address } } %>
-    <%= f.input :destination, input_html: { data: { autocomplete: :address } } %>
+    <%= f.input :enabled if f.object.persisted? %>
+    <%= f.input :origin, input_html: { data: { autocomplete: :address } }, placeholder: 'Rua dos Bobos, 0 - Tijuca' %>
+    <%= f.input :destination, input_html: { data: { autocomplete: :address } }, placeholder: 'Arpoador - Copacabana' %>
+    <%= f.input :hour, as: :string, input_html: { type: :time, value: (f.object.hour || Time.zone.now).strftime('%H:%M') }, hint: 'Horário aproximado de saída' %>
+
+    <% weekdays = Date::DAYNAMES.map { |day, i| [t("date.weekdays.#{day.downcase}"), day.parameterize] }.rotate %>
+    <fieldset class="form-group">
+      <legend><%= Route.human_attribute_name(:weekdays) %></legend>
+      <div class="row">
+        <% weekdays.each do |name, value| %>
+          <div class="form-check col-6">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" name="route[weekdays][]" value="<%= value %>" <%= 'checked' if f.object.weekdays.include?(value) %> />
+              <%= name %>
+            </label>
+          </div>
+        <% end %>
+      </div>
+    </fieldset>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= link_to 'Voltar', routes_path, class: 'btn btn-secondary' %>
+    <%= f.button :submit, class: 'btn btn-primary' %>
+    <%= link_to 'Deletar', @route, method: :delete, class: 'btn btn-outline-danger', data: { confirm: 'Você tem certeza?' } if f.object.persisted? %></td>
   </div>
 <% end %>

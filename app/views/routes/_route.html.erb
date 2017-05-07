@@ -1,0 +1,19 @@
+<% owned_by_current_user = signed_in? && route.user_id == current_user.id %>
+<% link = owned_by_current_user ? edit_route_path(route) : route_path(route) %>
+
+<%= link_to(link, class: 'list-group-item list-group-item-action flex-column align-items-start') do %>
+  <div class="d-flex w-100 justify-content-between">
+    <h5 class="mb-1"><%= route.origin %></h5>
+
+    <% if owned_by_current_user %>
+      <% if route.enabled? %>
+        <small><span class="badge badge-success">Ativa</span></small>
+      <% else %>
+        <small><span class="badge badge-default">Desativada</span></small>
+      <% end %>
+    <% end %>
+  </div>
+  <p class="mb-1">Até <%= route.destination %> <small class=text-muted">(<%= route.distance %>km)</small></p>
+  <small><%= localized_weekdays(route, format: '%a').to_sentence %> - <%= l(route.hour, format: '%H:%M') %></small>
+<% end %>
+
