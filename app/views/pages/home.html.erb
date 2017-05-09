@@ -1,4 +1,16 @@
-<h2>Novas rotas</h2>
+<div class="row justify-content-md-center" style="text-align: center">
+  <div class="col-6">
+    <%= link_to fa_icon('thumbs-up', text: 'Buscar carona'), new_ride_path, class: 'btn btn-primary' %>
+  </div>
+
+  <div class="col-6">
+    <%= link_to fa_icon('location-arrow', text: 'Dar carona'), routes_path, class: 'btn btn-success' %>
+  </div>
+</div>
+
+<hr />
+
+<p>Veja alguma rotas cadastradas recentemente...</p>
 
 <div class="list-group">
   <%= render @routes %>

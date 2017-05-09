@@ -1,10 +1,15 @@
 <% if @routes.any? %>
   <h2>Minhas rotas</h2>
-  <p>Estas são as rotas que você cadastrou!</p>
+  <p>Estas são as rotas que você cadastrou, outros usuários poderão pedir carona para você!</p>
 
   <div class="list-group">
     <%= render @routes %>
   </div>
+
+  <hr />
+
+  <%= link_to 'Cadatrar rota', new_route_path, class: 'btn btn-success' %>
+
 <% else %>
   <div class="row justify-content-md-center blank-slate">
     <div class="col col-lg-5">
