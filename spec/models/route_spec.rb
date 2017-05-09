@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Route, type: :model do
   describe 'associations' do
     it { is_expected.to belong_to(:user).inverse_of(:routes) }
+    it { is_expected.to have_many(:rides).inverse_of(:route) }
   end
 
   describe 'validations' do

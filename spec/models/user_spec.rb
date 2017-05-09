@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   describe 'associations' do
     it { is_expected.to have_many(:routes).inverse_of(:user) }
+    it { is_expected.to have_many(:rides_given).class_name(Ride).with_foreign_key(:driver_id).inverse_of(:driver) }
+    it { is_expected.to have_many(:rides_taken).class_name(Ride).with_foreign_key(:passenger_id).inverse_of(:passenger) }
   end
 
   describe 'validations' do

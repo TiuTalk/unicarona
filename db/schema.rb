@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170419225024) do
+ActiveRecord::Schema.define(version: 20170509203222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "rides", force: :cascade do |t|
+    t.bigint "driver_id"
+    t.bigint "passenger_id"
+    t.bigint "route_id"
+    t.boolean "driver_liked", default: false
+    t.boolean "passenger_liked", default: false
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["driver_id"], name: "index_rides_on_driver_id"
+    t.index ["passenger_id"], name: "index_rides_on_passenger_id"
+    t.index ["route_id"], name: "index_rides_on_route_id"
+  end
 
   create_table "routes", force: :cascade do |t|
     t.bigint "user_id"
@@ -46,4 +60,7 @@ ActiveRecord::Schema.define(version: 20170419225024) do
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
+  add_foreign_key "rides", "routes"
+  add_foreign_key "rides", "users", column: "driver_id"
+  add_foreign_key "rides", "users", column: "passenger_id"
 end

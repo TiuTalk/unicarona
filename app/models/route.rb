@@ -1,6 +1,7 @@
 class Route < ApplicationRecord
   # Associations
   belongs_to :user, inverse_of: :routes
+  has_many :rides, inverse_of: :route
 
   # Scopes
   scope :enabled, -> { where(enabled: true) }

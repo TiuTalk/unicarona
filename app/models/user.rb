@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   # Associations
   has_many :routes, inverse_of: :user
+  has_many :rides_given, class_name: 'Ride', foreign_key: :driver_id, inverse_of: :driver
+  has_many :rides_taken, class_name: 'Ride', foreign_key: :passenger_id, inverse_of: :passenger
 
   # Validations
   validates :name, :email, presence: true
