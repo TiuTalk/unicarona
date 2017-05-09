@@ -31,7 +31,7 @@ class Route < ApplicationRecord
   def geocode_origin
     return unless origin.present? && origin_changed? && origin_latitude.blank?
 
-    lat, lon = Geocoder.coordinates(origin)
+    lat, lon = Geocoder.coordinates(origin + ' - RJ, Brasil')
 
     self.origin_latitude = lat
     self.origin_longitude = lon
@@ -40,7 +40,7 @@ class Route < ApplicationRecord
   def geocode_destination
     return unless destination.present? && destination_changed? && destination_latitude.blank?
 
-    lat, lon = Geocoder.coordinates(destination)
+    lat, lon = Geocoder.coordinates(destination + ' - RJ, Brasil')
 
     self.destination_latitude = lat
     self.destination_longitude = lon

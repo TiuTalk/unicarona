@@ -21,6 +21,7 @@ gem 'phonelib', '~> 0.6'
 gem 'simple_form', github: 'elsurudo/simple_form', branch: 'rails-5.1.0'
 gem 'clearance', '~> 1.16'
 gem 'geocoder', '~> 1.4'
+gem 'factory_girl_rails', '~> 4.8'
 
 # Clients
 gem 'twilio-ruby', '~> 4.13'
@@ -28,7 +29,6 @@ gem 'twilio-ruby', '~> 4.13'
 group :development, :test do
   gem 'pry-rails', '~> 0.3'
   gem 'rspec-rails', '~> 3.5'
-  gem 'factory_girl_rails', '~> 4.8'
   gem 'ffaker', '~> 2.5'
 end
 
