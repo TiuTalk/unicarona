@@ -7,13 +7,16 @@
 
     <% if owned_by_current_user %>
       <% if route.enabled? %>
-        <small><span class="badge badge-success">Ativa</span></small>
+        <small class="text-right"><span class="badge badge-success">Ativa</span></small>
       <% else %>
-        <small><span class="badge badge-default">Desativada</span></small>
+        <small class="text-right"><span class="badge badge-default">Desativada</span></small>
       <% end %>
+    <% else %>
+      <small class="text-right hidden-sm-down"><%= route.user.name %></small>
     <% end %>
   </div>
-  <p class="mb-1">Até <%= route.destination %> <small class=text-muted">(<%= route.distance %>km)</small></p>
+
+  <p class="mb-1">Até <%= route.destination %> <small class="text-muted hidden-sm-down">(<%= route.distance %>km)</small></p>
   <small><%= localized_weekdays(route, format: '%a').to_sentence %> - <%= l(route.hour, format: '%H:%M') %></small>
 <% end %>
 
