@@ -10,8 +10,10 @@ Rails.application.routes.draw do
     resource :password, controller: "clearance/passwords", only: [:create, :edit, :update]
   end
 
-  resources :routes, path: 'rotas'
-  resources :rides, path: 'caronas', only: [:new, :create]
+  resources :routes, path: 'rotas' do
+    match :search, path: 'busca', on: :collection, via: [:get, :post]
+  end
+  resources :rides, path: 'caronas', only: [:create]
 
   resources :phone_confirmations, path: 'telefone', only: [:new, :create] do
     post :confirm, on: :collection

@@ -6,4 +6,7 @@ class Ride < ApplicationRecord
 
   # Validations
   validates :driver, :passenger, :route, presence: true
+
+  # Temporary attributes
+  attr_accessor :origin, :destination
 end

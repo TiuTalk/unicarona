@@ -1,0 +1,8 @@
+<div class="row justify-content-md-center blank-slate">
+  <div class="col col-lg-5">
+    <%= fa_icon(icon) if local_assigns[:icon].present? %>
+    <%= content_tag(:p, message) %>
+    <%= action.html_safe if local_assigns[:action].present? %>
+  </div>
+</div>
+

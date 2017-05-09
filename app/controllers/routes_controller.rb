@@ -6,6 +6,15 @@ class RoutesController < ApplicationController
     redirect_to root_path, alert: 'Rota não encontrada'
   end
 
+  def search
+    if request.post?
+      @route = Route.new(route_search_params)
+      @routes = Route.search(@route, Route.where.not(user: current_user))
+    else
+      @route = Route.new
+    end
+  end
+
   def index
     @routes = current_user.routes.all
   end
@@ -52,5 +61,9 @@ class RoutesController < ApplicationController
 
   def route_params
     params.require(:route).permit(:origin, :destination, :hour, :enabled, weekdays: [])
+  end
+
+  def route_search_params
+    params.require(:route).permit(:origin, :destination)
   end
 end

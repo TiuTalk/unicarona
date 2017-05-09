@@ -1,0 +1,13 @@
+<%= simple_form_for(@ride, html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :origin, as: :hidden %>
+    <%= f.input :destination, placeholder: 'Arpoador - Copacabana' %>
+  </div>
+
+  <div class="form-actions">
+    <%= link_to 'Voltar', routes_path, class: 'btn btn-secondary' %>
+    <%= f.button :submit, 'Buscar carona', class: 'btn btn-primary' %>
+  </div>
+<% end %>

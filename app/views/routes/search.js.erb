@@ -1,0 +1,5 @@
+<% if @routes.any? %>
+  $("div[data-result]").html("<%= j render(@routes) %>");
+<% else %>
+  $("div[data-result]").html("<%= j render('blank_slate', icon: 'car', message: 'Nenhuma carona encontrada :(') %>");
+<% end %>

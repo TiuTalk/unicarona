@@ -1,0 +1,17 @@
+<h1>Pedir carona</h1>
+
+<%= simple_form_for(@route, url: search_routes_path, html: { class: 'form-horizontal', data: { search_route: true } }, remote: true) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :origin, as: :hidden %>
+    <%= f.input :destination, placeholder: 'Arpoador - Copacabana' %>
+  </div>
+
+  <div class="form-actions">
+    <%= link_to 'Voltar', routes_path, class: 'btn btn-secondary' %>
+    <%= f.button :submit, 'Buscar carona', class: 'btn btn-primary', data: { disable_with: 'Buscando...' }, disabled: true %>
+  </div>
+<% end %>
+
+<div class="mt-3" data-result></div>

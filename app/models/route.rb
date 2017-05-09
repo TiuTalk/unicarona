@@ -15,8 +15,21 @@ class Route < ApplicationRecord
   # Serialization
   serialize :weekdays, Array
 
+  # Geocoder
+  geocoded_by :origin
+
   def distance
     Geocoder::Calculations.distance_between(origin_coordinates, destination_coordinates).round(2)
+  end
+
+  def self.search(route, scope = Route)
+    range = ENV.fetch('DISTANCE_RANGE', 1.5).to_f
+    origin = route.origin.split(',')
+
+    near_origin = scope.near(origin, range, unit: :km, latitude: :origin_latitude, longitude: :origin_longitude).limit(5)
+    near_destination = scope.near(route.destination, range, unit: :km, latitude: :destination_latitude, longitude: :destination_longitude).limit(5)
+
+    near_origin & near_destination
   end
 
   private
