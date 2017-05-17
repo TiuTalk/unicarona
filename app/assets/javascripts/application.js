@@ -7,28 +7,24 @@
 $(document).on('turbolinks:load', function() {
   $('[data-toggle="tooltip"]').tooltip();
 
-  if ($('body').hasClass('routes_search')) {
-    var $search_form = $('form[data-search-route]');
+  $('[data-geolocate]').on('click', function(e) {
+    e.preventDefault();
 
-    // Disable the submit to fetch the position
-    $search_form.find(':submit').attr('disabled', true);
+    var $target = $($(this).data('geolocate'));
 
-    if (navigator.geolocation) {
+    if ($target.length && navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
         var pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
 
-        $search_form.find('#route_origin').val(pos.lat + ',' + pos.lng);
-
-        // Enable the submit again
-        $search_form.find(':submit').attr('disabled', false);
+        $target.val(pos.lat + ',' + pos.lng);
       }, function() {
         console.log('FAIL');
       });
     } else {
       console.log('ERROR');
     }
-  }
+  });
 });

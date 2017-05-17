@@ -4,13 +4,21 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :origin, as: :hidden %>
+    <div class="form-group string required route_destination">
+      <%= f.label :origin %>
+
+      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <%= f.input_field :origin, class: 'form-control string required', placeholder: 'Praça Paulo de Frontin - Rio Comprido' %>
+        <%= link_to(fa_icon('compass'), '#', data: { geolocate: '#route_origin' }, class: 'btn btn-default input-group-addon') %>
+      </div>
+    </div>
+
     <%= f.input :destination, placeholder: 'Arpoador - Copacabana' %>
   </div>
 
   <div class="form-actions">
     <%= link_to 'Voltar', routes_path, class: 'btn btn-secondary' %>
-    <%= f.button :submit, 'Buscar carona', class: 'btn btn-primary', data: { disable_with: 'Buscando...' }, disabled: true %>
+    <%= f.button :submit, 'Buscar carona', class: 'btn btn-primary', data: { disable_with: 'Buscando...' } %>
   </div>
 <% end %>
 
