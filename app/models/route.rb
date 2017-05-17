@@ -25,9 +25,10 @@ class Route < ApplicationRecord
   def self.search(route, scope = Route)
     range = ENV.fetch('DISTANCE_RANGE', 1.5).to_f
     origin = route.origin.split(',')
+    destination = route.destination.match(/\A-?[\d.]+,-?[\d\.]+\z/) ? route.destination.split(',') : route.destination
 
     near_origin = scope.near(origin, range * 2, unit: :km, latitude: :origin_latitude, longitude: :origin_longitude).limit(5)
-    near_destination = scope.near(route.destination, range, unit: :km, latitude: :destination_latitude, longitude: :destination_longitude).limit(5)
+    near_destination = scope.near(destination, range, unit: :km, latitude: :destination_latitude, longitude: :destination_longitude).limit(5)
 
     near_origin & near_destination
   end

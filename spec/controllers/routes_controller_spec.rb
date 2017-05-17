@@ -14,6 +14,28 @@ RSpec.describe RoutesController, type: :controller do
     allow(Geocoder).to receive(:coordinates).and_return(coordinates)
   end
 
+  describe "GET #search" do
+    it 'respond with OK' do
+      get :search
+      expect(response).to be_ok
+    end
+  end
+
+  describe "POST #search" do
+    let!(:route_a) { create(:route) }
+    let!(:route_b) { create(:route) }
+
+    let(:origin) { route_a.reload.send(:origin_coordinates).join(',') }
+    let(:destination) { route_a.reload.send(:destination_coordinates).join(',') }
+
+    it 'respond with OK & results' do
+      post :search, params: { route: { origin: origin, destination: destination } }
+
+      expect(assigns(:routes)).to match_array([route_a])
+      expect(response).to be_ok
+    end
+  end
+
   describe "GET #index" do
     it "assigns all routes as @routes" do
       get :index, params: {}
