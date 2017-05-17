@@ -19,7 +19,7 @@
   <p class="mb-1">Até <%= route.destination %> <small class="text-muted hidden-sm-down">(<%= route.length %>km)</small></p>
   <small><%= localized_weekdays(route, format: '%a').to_sentence %> - <%= l(route.hour, format: '%H:%M') %></small>
 
-  <% if Rails.env.development? && @route.present? %>
+  <% if Rails.env.development? && @route.present? && !@route.persisted? %>
     <small class="text-muted">Distance: <%= route.distance.round(2) %>km</small>
   <% end %>
 <% end %>
