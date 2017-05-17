@@ -13,7 +13,7 @@ ActiveRecord::Migration.say_with_time 'Creating users...' do
 end if User.count.zero?
 
 ActiveRecord::Migration.say_with_time 'Creating routes...' do
-  streets = ['Unicarioca', 'Estácio', 'Tijuca', 'Sambódromo', 'Praia de Ipanema', 'Rua Raul Pompéia - Copacabana', 'Av. Paulo de Frontin - Rio Comprido', 'Av. Maracanã - Tijuca', 'Rua Nascimento Silva - Ipanema', 'Rua Farme de Amoedo - Ipanema', 'Av. Presidente Vargas - Centro', 'Av. Rio Branco - Centro', 'Rua da Glória - Glória']
+  streets = ['Unicarioca', 'Estácio', 'Tijuca', 'Sambódromo', 'Praia de Ipanema', 'Av. das Américas - Barra da Tijuca', 'Rua Raul Pompéia - Copacabana', 'Av. Paulo de Frontin - Rio Comprido', 'Av. Maracanã - Tijuca', 'Rua Nascimento Silva - Ipanema', 'Rua Farme de Amoedo - Ipanema', 'Av. Presidente Vargas - Centro', 'Av. Rio Branco - Centro']
   hours = ['18:00', '07:00', '12:00']
   weekdays = %w(monday tuesday friday sunday)
   users = User.all
