@@ -39,9 +39,12 @@ class User < ApplicationRecord
     return unless device_token.present?
 
     gcm_key = Rails.application.secrets.google_gcm_api_key
-    app = RailsPushNotifications::GCMApp.where(gcm_key: gcm_key).first_or_create!
-    app.notifications.where(data: data, destinations: [device_token]).first_or_create!
-    app.push_notifications
+    data = { to: device_token, notification: data }
+
+    response = RestClient.post("https://fcm.googleapis.com/fcm/send", data.to_json, Authorization: "key=#{gcm_key}", content_type: :json)
+    body = JSON.parse(response.body)
+
+    body['failure'].zero?
   end
 
   private

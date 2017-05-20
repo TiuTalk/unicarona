@@ -2,22 +2,26 @@
 http_interactions:
 - request:
     method: post
-    uri: https://android.googleapis.com/gcm/send
+    uri: https://fcm.googleapis.com/fcm/send
     body:
       encoding: UTF-8
-      string: '{"registration_ids":["wrong"],"data":{"title":"Something","text":"Something
+      string: '{"to":"wrong","notification":{"title":"Something","text":"Something
         amazing!"}}'
     headers:
-      Content-Type:
-      - application/json
-      Authorization:
-      - key=<GOOGLE_GCM_API_KEY>
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
       User-Agent:
-      - Ruby
+      - rest-client/2.0.2 (darwin16.4.0 x86_64) ruby/2.4.0p0
+      Authorization:
+      - key=<GOOGLE_GCM_API_KEY>
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '79'
+      Host:
+      - fcm.googleapis.com
   response:
     status:
       code: 200
@@ -25,10 +29,12 @@ http_interactions:
     headers:
       Content-Type:
       - application/json; charset=UTF-8
+      Content-Encoding:
+      - gzip
       Date:
-      - Sat, 20 May 2017 20:09:57 GMT
+      - Sat, 20 May 2017 23:04:03 GMT
       Expires:
-      - Sat, 20 May 2017 20:09:57 GMT
+      - Sat, 20 May 2017 23:04:03 GMT
       Cache-Control:
       - private, max-age=0
       X-Content-Type-Options:
@@ -45,7 +51,8 @@ http_interactions:
       - chunked
     body:
       encoding: ASCII-8BIT
-      string: '{"multicast_id":5796595971048043596,"success":0,"failure":1,"canonical_ids":0,"results":[{"error":"InvalidRegistration"}]}'
+      string: !binary |-
+        H4sIAAAAAAAAACWMwQrDIBAF/+WdPSSldqN/0GuvpRQxtixYhV3tJeTfI+Q2MMxs+PXcOAZtb17hrbNk3eW20LSQm4nc1UB7jEkVfjL4BM5dEvxsEEOpZbR5pKeVpGM3+LkhiVSBx738Q+b1kb6sTULjWrC/9gO/1V6wegAAAA==
     http_version: 
-  recorded_at: Sat, 20 May 2017 20:09:57 GMT
+  recorded_at: Sat, 20 May 2017 23:04:03 GMT
 recorded_with: VCR 3.0.3

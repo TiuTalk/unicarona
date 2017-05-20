@@ -26,7 +26,7 @@ gem 'ffaker', '~> 2.5'
 
 # Clients
 gem 'twilio-ruby', '~> 4.13'
-gem 'rails-push-notifications', '~> 0.2'
+gem 'rest-client', '~> 2.0'
 
 group :development, :test do
   gem 'pry-rails', '~> 0.3'

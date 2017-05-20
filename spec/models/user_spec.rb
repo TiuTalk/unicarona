@@ -73,16 +73,11 @@ RSpec.describe User, type: :model do
     subject(:user) { create(:user, device_token: token) }
 
     context 'with valid device_token' do
-      let(:token) { 'e4_aiIzKcl4:APA91bF8Q-PdWO5yYKA7KkFApiYGZx9Zu1abbHFqxL1Kv5RHror08ZPLD5GrxUQJ7Tq-l8pJ6doMBu7xf4zzgd7rIIMvpWIz-6jL0p-qp_bv7H_YYfADEZt2ZdN4lZicVbs--XcyRsbJ' }
+      let(:token) { 'dkLBxLYYXkE:APA91bEjTmdw4X30tWvJt_jbnx5a-vrtz12EM0RPV6USDfqkK55f1YkF2GH2LI3gvQzzCXBU-0SKVcZHj2YswLPdpxcEHLZ3PfWBmBSfjWP_hScL9ECOb1pur9bHdXtqYoX3_cRX3sTB' }
 
       it 'send the notification' do
-        expect do
-          user.push_notification(title: 'Something', text: 'Something amazing!')
-        end.to change(RailsPushNotifications::Notification, :count).by(1)
-
-        notification = RailsPushNotifications::Notification.last
-        expect(notification).to be_sent
-        expect(notification).to_not be_failed
+        response = user.push_notification(title: 'Something', text: 'Something amazing!')
+        expect(response).to be_truthy
       end
     end
 
@@ -90,13 +85,8 @@ RSpec.describe User, type: :model do
       let(:token) { 'wrong' }
 
       it 'do not send the notification' do
-        expect do
-          user.push_notification(title: 'Something', text: 'Something amazing!')
-        end.to change(RailsPushNotifications::Notification, :count).by(1)
-
-        notification = RailsPushNotifications::Notification.last
-        expect(notification).to be_sent
-        expect(notification).to be_failed
+        response = user.push_notification(title: 'Something', text: 'Something amazing!')
+        expect(response).to be_falsey
       end
     end
 
@@ -104,12 +94,9 @@ RSpec.describe User, type: :model do
       let(:token) { nil }
 
       it 'do not send the notification' do
-        expect_any_instance_of(RailsPushNotifications::GCMApp).to_not receive(:push_notifications)
-
-        expect do
-          response = user.push_notification(title: 'Something', text: 'Something amazing!')
-          expect(response).to be_falsey
-        end.to_not change(RailsPushNotifications::Notification, :count)
+        expect(RestClient).to_not receive(:post)
+        response = user.push_notification(title: 'Something', text: 'Something amazing!')
+        expect(response).to be_falsey
       end
     end
   end
