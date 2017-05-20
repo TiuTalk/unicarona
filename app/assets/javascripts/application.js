@@ -60,8 +60,5 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, origin, 
 
 function callFromActivity(token) {
   var data = { token: token };
-
-  $.post('/users/set_device_token.json', data, function() {
-    AndroidFunction.showToast('Device token stored!');
-  });
+  $.post('/users/set_device_token.json', data);
 }
