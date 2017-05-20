@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resource :session, controller: "clearance/sessions", only: [:create]
   resources :users, only: [:create] do
     resource :password, controller: "clearance/passwords", only: [:create, :edit, :update]
-    post :store_device_token, on: :collection
+    post :set_device_token, on: :collection
   end
 
   resources :routes, path: 'rotas' do

@@ -14,8 +14,10 @@ class UsersController < Clearance::UsersController
     end
   end
 
-  def store_device_token
+  def set_device_token
     session[:device_token] = params[:token]
+    store_device_token if signed_in?
+
     head :ok
   end
 
