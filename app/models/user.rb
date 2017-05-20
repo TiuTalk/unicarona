@@ -35,6 +35,15 @@ class User < ApplicationRecord
     "https://api.adorable.io/avatars/#{size}/#{email}"
   end
 
+  def push_notification(data = {})
+    return unless device_token.present?
+
+    gcm_key = Rails.application.secrets.google_gcm_api_key
+    app = RailsPushNotifications::GCMApp.where(gcm_key: gcm_key).first_or_create!
+    app.notifications.where(data: data, destinations: [device_token]).first_or_create!
+    app.push_notifications
+  end
+
   private
 
   def normalize_phone

@@ -68,4 +68,49 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe '#push_notification', vcr: true do
+    subject(:user) { create(:user, device_token: token) }
+
+    context 'with valid device_token' do
+      let(:token) { 'e4_aiIzKcl4:APA91bF8Q-PdWO5yYKA7KkFApiYGZx9Zu1abbHFqxL1Kv5RHror08ZPLD5GrxUQJ7Tq-l8pJ6doMBu7xf4zzgd7rIIMvpWIz-6jL0p-qp_bv7H_YYfADEZt2ZdN4lZicVbs--XcyRsbJ' }
+
+      it 'send the notification' do
+        expect do
+          user.push_notification(title: 'Something', text: 'Something amazing!')
+        end.to change(RailsPushNotifications::Notification, :count).by(1)
+
+        notification = RailsPushNotifications::Notification.last
+        expect(notification).to be_sent
+        expect(notification).to_not be_failed
+      end
+    end
+
+    context 'with invalid device_token'do
+      let(:token) { 'wrong' }
+
+      it 'do not send the notification' do
+        expect do
+          user.push_notification(title: 'Something', text: 'Something amazing!')
+        end.to change(RailsPushNotifications::Notification, :count).by(1)
+
+        notification = RailsPushNotifications::Notification.last
+        expect(notification).to be_sent
+        expect(notification).to be_failed
+      end
+    end
+
+    context 'without device_token set' do
+      let(:token) { nil }
+
+      it 'do not send the notification' do
+        expect_any_instance_of(RailsPushNotifications::GCMApp).to_not receive(:push_notifications)
+
+        expect do
+          response = user.push_notification(title: 'Something', text: 'Something amazing!')
+          expect(response).to be_falsey
+        end.to_not change(RailsPushNotifications::Notification, :count)
+      end
+    end
+  end
 end
