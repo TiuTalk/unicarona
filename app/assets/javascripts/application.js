@@ -58,7 +58,9 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, origin, 
   });
 }
 
-function callFromActivity(token) {
-  var data = { token: token };
-  $.post('/users/set_device_token.json', data);
+function callFromActivity(method, message) {
+  if (method == 'setDeviceToken') {
+    var data = { token: message };
+    $.post('/users/set_device_token.json', data);
+  }
 }
