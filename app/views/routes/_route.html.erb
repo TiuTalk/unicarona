@@ -24,3 +24,6 @@
   <% end %>
 <% end %>
 
+<% if local_assigns.has_key?(:map) %>
+  <div style="width: 100%; height: 300px" data-map-origin="<%= @route.origin %>" data-map-destination="<%= @route.destination %>"></div>
+<% end %>

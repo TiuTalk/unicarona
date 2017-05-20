@@ -28,3 +28,32 @@ $(document).on('turbolinks:load', function() {
     }
   });
 });
+
+function initMap() {
+  $('[data-map-origin]').each(function() {
+    var directionsService = new google.maps.DirectionsService;
+    var directionsDisplay = new google.maps.DirectionsRenderer;
+    var map = new google.maps.Map(this, { zoom: 6 });
+
+    var origin = $(this).data('map-origin'),
+      destination = $(this).data('map-destination');
+
+    directionsDisplay.setMap(map);
+    calculateAndDisplayRoute(directionsService, directionsDisplay, origin, destination);
+  });
+}
+
+function calculateAndDisplayRoute(directionsService, directionsDisplay, origin, destination) {
+  directionsService.route({
+    origin: origin,
+    destination: destination,
+    optimizeWaypoints: true,
+    travelMode: 'DRIVING'
+  }, function(response, status) {
+    if (status === 'OK') {
+      directionsDisplay.setDirections(response);
+    } else {
+      window.alert('Directions request failed due to ' + status);
+    }
+  });
+}
