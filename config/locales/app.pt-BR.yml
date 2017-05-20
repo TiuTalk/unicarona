@@ -17,10 +17,10 @@ pt-BR:
       friday: Sexta-feira
       saturday: Sábado
   rides_given_html:
-    zero: Nunca deu carona
+    zero: Não deu carona
     one: Deu <b>uma</b> carona
     other: Deu <b>%{count}</b> caronas
   rides_taken_html:
-    zero: Nunca pegou carona
+    zero: Não pegou carona
     one: Pegou <b>uma</b> carona
     other: Pegou <b>%{count}</b> caronas
