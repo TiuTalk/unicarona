@@ -11,7 +11,7 @@
       <% else %>
         <small class="text-right"><span class="badge badge-default">Desativada</span></small>
       <% end %>
-    <% else %>
+    <% elsif controller_name != 'routes' || action_name != 'show' %>
       <small class="text-right hidden-sm-down"><%= route.user.name %></small>
     <% end %>
   </div>
