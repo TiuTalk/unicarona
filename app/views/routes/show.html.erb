@@ -4,3 +4,4 @@
 
 <%= render @route, map: true %>
 
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.secrets.google_maps_api_key}&callback=initMap", async: true, defer: true, data: { turbolinks_track: 'reload' } %>
