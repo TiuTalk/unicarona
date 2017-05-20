@@ -57,3 +57,13 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, origin, 
     }
   });
 }
+
+function callFromActivity(method, message) {
+  if (method == 'storeDeviceToken') {
+    var data = { token: message };
+
+    $.post('/users/store_device_token.json', data, function() {
+      AndroidFunction.showToast('Device token stored!');
+    });
+  }
+}

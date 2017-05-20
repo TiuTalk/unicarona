@@ -14,6 +14,11 @@ class UsersController < Clearance::UsersController
     end
   end
 
+  def store_device_token
+    session[:device_token] = params[:token]
+    head :ok
+  end
+
   private
 
   def user_params

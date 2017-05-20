@@ -21,6 +21,10 @@
 
     <div class="container">
       <%= yield %>
+
+      <% if session[:device_token].present? %>
+        <p>Device token: <%= session[:device_token] %></p>
+      <% end %>
     </div>
   </body>
 </html>
