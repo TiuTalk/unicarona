@@ -1,6 +1,7 @@
-<% given = user.rides_given.count %>
-<% taken = user.rides_taken.count %>
-<div class="card">
+<% given = user.rides_given.completed.count %>
+<% taken = user.rides_taken.completed.count %>
+
+<div class="card" data-user-id="<%= user.id %>">
   <div class="card-block">
     <%= image_tag(user.avatar, class: 'img-thumbnail float-right hidden-sm-down', alt: user.name, size: '100x100') %>
     <%= image_tag(user.avatar, class: 'img-thumbnail float-right hidden-md-up', alt: user.name, size: '50x50') %>
@@ -10,9 +11,5 @@
       <%= fa_icon('thumbs-up') %> <%= t(:rides_given_html, count: given) %> e <%= t(:rides_taken_html, count: taken).downcase %><br />
       <%= fa_icon('calendar-o') %> Usuário(a) desde <%= l(user.created_at.to_date, format: :short) %><br />
     </p>
-
-    <% if route.present? %>
-      <%= link_to("Pedir carona para #{route.destination}", '#', class: 'card-link btn btn-primary') %>
-    <% end %>
   </div>
 </div>

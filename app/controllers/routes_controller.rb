@@ -21,6 +21,7 @@ class RoutesController < ApplicationController
 
   def show
     @route = Route.find(params[:id])
+    @ride = current_user.rides_taken.pending.where(route_id: @route.id).first_or_initialize
   end
 
   def new

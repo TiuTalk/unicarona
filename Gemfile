@@ -16,6 +16,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'turbolinks', '~> 5'
 gem 'font-awesome-rails', '~> 4.7'
 
+# Controllers
+gem 'responders', '~> 2.4'
+
 # Models
 gem 'phonelib', '~> 0.6'
 gem 'simple_form', github: 'elsurudo/simple_form', branch: 'rails-5.1.0'
@@ -23,6 +26,7 @@ gem 'clearance', '~> 1.16'
 gem 'geocoder', '~> 1.4'
 gem 'factory_girl_rails', '~> 4.8'
 gem 'ffaker', '~> 2.5'
+gem 'aasm', '~> 4.12'
 
 # Clients
 gem 'twilio-ruby', '~> 4.13'
