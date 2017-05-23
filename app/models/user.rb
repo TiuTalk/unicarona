@@ -35,17 +35,14 @@ class User < ApplicationRecord
     "https://api.adorable.io/avatars/#{size}/#{email}"
   end
 
-  def push_notification(data = {})
-    return unless device_token.present?
-
-    gcm_key = Rails.application.secrets.google_gcm_api_key
-    data = { to: device_token, notification: data }
-
-    response = RestClient.post("https://fcm.googleapis.com/fcm/send", data.to_json, Authorization: "key=#{gcm_key}", content_type: :json)
-    body = JSON.parse(response.body)
-
-    body['failure'].zero?
+  def notify(data = {})
+    if device_token.present?
+      push_notification(data)
+    elsif phone_confirmed?
+      send_sms(data[:text])
+    end
   end
+
 
   private
 
@@ -59,5 +56,15 @@ class User < ApplicationRecord
 
     client = Twilio::REST::Client.new
     client.messages.create(from: from, to: to, body: message)
+  end
+
+  def push_notification(data = {})
+    gcm_key = Rails.application.secrets.google_gcm_api_key
+    data = { to: device_token, notification: data }
+
+    response = RestClient.post("https://fcm.googleapis.com/fcm/send", data.to_json, Authorization: "key=#{gcm_key}", content_type: :json)
+    body = JSON.parse(response.body)
+
+    body['failure'].zero?
   end
 end

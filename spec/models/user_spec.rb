@@ -69,14 +69,14 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe '#push_notification', vcr: true do
+  describe '#notify', vcr: true do
     subject(:user) { create(:user, device_token: token) }
 
     context 'with valid device_token' do
       let(:token) { 'dkLBxLYYXkE:APA91bEjTmdw4X30tWvJt_jbnx5a-vrtz12EM0RPV6USDfqkK55f1YkF2GH2LI3gvQzzCXBU-0SKVcZHj2YswLPdpxcEHLZ3PfWBmBSfjWP_hScL9ECOb1pur9bHdXtqYoX3_cRX3sTB' }
 
       it 'send the notification' do
-        response = user.push_notification(title: 'Something', text: 'Something amazing!')
+        response = user.notify(title: 'Something', text: 'Something amazing!')
         expect(response).to be_truthy
       end
     end
@@ -85,7 +85,7 @@ RSpec.describe User, type: :model do
       let(:token) { 'wrong' }
 
       it 'do not send the notification' do
-        response = user.push_notification(title: 'Something', text: 'Something amazing!')
+        response = user.notify(title: 'Something', text: 'Something amazing!')
         expect(response).to be_falsey
       end
     end
@@ -93,10 +93,11 @@ RSpec.describe User, type: :model do
     context 'without device_token set' do
       let(:token) { nil }
 
-      it 'do not send the notification' do
+      it 'deliver the text as SMS' do
+        expect(user).to receive(:send_sms).with('Something amazing!').and_return(true)
         expect(RestClient).to_not receive(:post)
-        response = user.push_notification(title: 'Something', text: 'Something amazing!')
-        expect(response).to be_falsey
+        response = user.notify(title: 'Something', text: 'Something amazing!')
+        expect(response).to be_truthy
       end
     end
   end

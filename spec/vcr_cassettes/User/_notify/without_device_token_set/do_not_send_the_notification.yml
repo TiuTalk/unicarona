@@ -1,0 +1,68 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.twilio.com/2010-04-01/Accounts/<TWILIO_ACCOUNT_SID>/Messages.json
+    body:
+      encoding: US-ASCII
+      string: From=<TWILIO_PHONE_NUMBER>&To=%2B5521910253369&Body=Something+amazing%21
+    headers:
+      Accept:
+      - application/json
+      Accept-Charset:
+      - utf-8
+      User-Agent:
+      - twilio-ruby/4.13.0 (ruby/x86_64-darwin16 2.4.0-p0)
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - Basic QUNlYzA1YTNkMTc3NjIwOWYwYjJhYzhkMjUwYzkyZGU3NDo1OWMyYTFiYWIwNzMzZTlhOGU0ZmVjYTVmNjI0NjhiNg==
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 201
+      message: CREATED
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Accept, Authorization, Content-Type, If-Match, If-Modified-Since, If-None-Match,
+        If-Unmodified-Since
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - ETag
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 23 May 2017 01:47:06 GMT
+      Strict-Transport-Security:
+      - max-age=15768000
+      Twilio-Request-Duration:
+      - '0.077'
+      Twilio-Request-Id:
+      - RQ30e4bdc4b0114d32b7a23c17de5e7825
+      X-Powered-By:
+      - AT-5000
+      X-Shenanigans:
+      - none
+      Content-Length:
+      - '783'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"sid": "SM8f79266885e943188d07416fb132ded2", "date_created": "Tue,
+        23 May 2017 01:47:06 +0000", "date_updated": "Tue, 23 May 2017 01:47:06 +0000",
+        "date_sent": null, "account_sid": "<TWILIO_ACCOUNT_SID>", "to": "+5521910253369",
+        "from": "<TWILIO_PHONE_NUMBER>", "messaging_service_sid": null, "body": "Something
+        amazing!", "status": "queued", "num_segments": "1", "num_media": "0", "direction":
+        "outbound-api", "api_version": "2010-04-01", "price": null, "price_unit":
+        "USD", "error_code": null, "error_message": null, "uri": "/2010-04-01/Accounts/<TWILIO_ACCOUNT_SID>/Messages/SM8f79266885e943188d07416fb132ded2.json",
+        "subresource_uris": {"media": "/2010-04-01/Accounts/<TWILIO_ACCOUNT_SID>/Messages/SM8f79266885e943188d07416fb132ded2/Media.json"}}'
+    http_version: 
+  recorded_at: Tue, 23 May 2017 01:47:06 GMT
+recorded_with: VCR 3.0.3
