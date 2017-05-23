@@ -21,7 +21,7 @@ class RidesController < ApplicationController
   def notify_driver(ride)
     data = {
       title: 'Pedido de carona',
-      text: "#{ride.passenger.name} quer uma carona para #{ride.route.destination}"
+      text: "#{ride.passenger.first_name} quer uma carona para #{ride.route.destination}"
     }
 
     ride.driver.notify(data)

@@ -101,4 +101,11 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe '#first_name' do
+    it 'return the first name of the user' do
+      expect(build(:user, name: 'Thiago Belem').first_name).to eq('Thiago')
+      expect(build(:user, name: 'The Thiago Belem').first_name).to eq('The')
+    end
+  end
 end

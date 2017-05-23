@@ -1,13 +1,13 @@
 <% if ride.persisted? %>
   <% if ride.created_at < 5.minutes.ago %>
-    <div class="alert alert-warning mt-2">Você já pediu carona para <%= ride.driver.name %>, por favor aguarde a resposta!</div>
+    <div class="alert alert-warning mt-2">Você já pediu carona para <%= ride.driver.first_name %>, por favor aguarde a resposta!</div>
   <% else %>
-    <div class="alert alert-warning mt-2">Pedido de carona enviado para <%= ride.driver.name %>, por favor aguarde a resposta!</div>
+    <div class="alert alert-warning mt-2">Pedido de carona enviado para <%= ride.driver.first_name %>, por favor aguarde a resposta!</div>
   <% end %>
 <% else %>
   <%= simple_form_for(ride, remote: true, html: { class: 'text-center' }) do |f| %>
     <%= f.input :route_id, as: :hidden %>
-    <%= f.submit "Pedir carona para #{ride.route.user.name}", class: 'card-link btn btn-primary' %>
+    <%= f.submit "Pedir carona para #{ride.route.user.first_name}", class: 'card-link btn btn-primary' %>
   <% end %>
 <% end %>
 
