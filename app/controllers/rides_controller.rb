@@ -5,7 +5,7 @@ class RidesController < ApplicationController
 
   def create
     @ride = current_user.rides_taken.pending.where(ride_params).first_or_initialize do |ride|
-      ride.save && notify_driver(ride)
+      ride.save && ride.notify_driver
       ride
     end
 
@@ -16,14 +16,5 @@ class RidesController < ApplicationController
 
   def ride_params
     params.require(:ride).permit(:route_id)
-  end
-
-  def notify_driver(ride)
-    data = {
-      title: 'Pedido de carona',
-      text: "#{ride.passenger.first_name} quer uma carona para #{ride.route.destination}"
-    }
-
-    ride.driver.notify(data)
   end
 end

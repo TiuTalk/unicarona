@@ -20,6 +20,11 @@ class Ride < ApplicationRecord
     state :completed
   end
 
+  def notify_driver
+    data = { title: 'Pedido de carona', text: "#{passenger.first_name} pediu carona para #{route.destination}" }
+    driver.notify(data)
+  end
+
   private
 
   def set_driver

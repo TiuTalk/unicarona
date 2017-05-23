@@ -26,7 +26,7 @@ RSpec.describe RidesController, type: :controller do
     end
 
     it 'notify the driver' do
-      expect_any_instance_of(User).to receive(:notify).with(title: 'Pedido de carona', text: "#{user.first_name} quer uma carona para #{route.destination}")
+      expect_any_instance_of(User).to receive(:notify).with(title: 'Pedido de carona', text: "#{user.first_name} pediu carona para #{route.destination}")
 
       post :create, params: params, format: :json
     end
