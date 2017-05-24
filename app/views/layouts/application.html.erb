@@ -5,12 +5,13 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="turbolinks-cache-control" content="no-cache" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag 'application', media: 'all', data: { turbolinks_track: 'reload' } %>
+    <%= javascript_include_tag 'application', data: { turbolinks_track: 'reload' } %>
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
