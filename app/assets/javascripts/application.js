@@ -7,6 +7,12 @@
 $(document).on('turbolinks:load', function() {
   $('[data-toggle="tooltip"]').tooltip();
 
+  // Toggle sidebar
+  $('[data-toggle="sidebar"]').on('click', function(e) {
+    e.preventDefault();
+    $('#wrapper').toggleClass('toggled');
+  });
+
   $('[data-geolocate]').on('click', function(e) {
     e.preventDefault();
 

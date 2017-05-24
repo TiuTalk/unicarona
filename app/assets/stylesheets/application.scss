@@ -1,9 +1,11 @@
-@import "bootstrap/dist/css/bootstrap";
+@import "variables";
+@import "bootstrap/scss/bootstrap";
+@import "startbootstrap-simple-sidebar/css/simple-sidebar";
 @import "font-awesome";
 
 // Header
-.navbar { margin-bottom: 1em }
-.nav-item img { max-height: 1.45em }
+// .navbar { margin-bottom: 1em }
+.navbar-brand .fa { color: rgba(#000, .3) }
 
 // Flash messages
 .alert.alert-notice { @extend .alert-success }

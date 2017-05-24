@@ -1,44 +1,4 @@
-<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <%= link_to t('application.title'), root_path, class: 'navbar-brand' %>
-
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <% if signed_in? %>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item"><%= link_to 'Minhas rotas', routes_path, class: 'nav-link' %></li>
-        <%# <li class="nav-item"><%= link_to 'Minhas caronas', '#', class: 'nav-link' %1></li> %>
-        <li class="nav-item"><%= link_to t('pages.how_it_works.title'), '#', class: 'nav-link' %></li>
-      </ul>
-
-      <ul class="navbar-nav">
-        <li class="nav-item dropdown">
-          <%= link_to '#', class: 'nav-link dropdown-toggle', id: 'user-dropdown', data: { toggle: :dropdown } do %>
-            <%= image_tag(current_user.avatar, alt: current_user.name, class: 'rounded mr-1') %>
-            <%= current_user.name %>
-          <% end %>
-
-          <div class="dropdown-menu" aria-labelledby="user-dropdown">
-            <%# <%= link_to 'Minha conta', '#', class: 'dropdown-item' %1> %>
-            <%# <div class="dropdown-divider"></div> %>
-            <%= link_to t('layouts.application.sign_out'), sign_out_path, method: :delete, class: 'dropdown-item', data: { toggle: :tooltip, placement: :bottom } %>
-          </div>
-        </li>
-
-        <li class="nav-item"></li>
-      </ul>
-    <% else %>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item"><%= link_to t('pages.how_it_works.title'), '#', class: 'nav-link' %></li>
-      </ul>
-
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><%= link_to fa_icon('user-plus', text: t('helpers.submit.user.create')), sign_up_path, class: 'btn btn-success mr-2' %></li>
-        <li class="nav-item"><%= link_to fa_icon('sign-in', text: t('layouts.application.sign_in')), sign_in_path, class: 'btn btn-outline-primary' %></li>
-      </ul>
-    <% end %>
-  </div>
+<nav class="navbar navbar-inverse bg-inverse flex-row align-items-center justify-content-between">
+  <%= link_to fa_icon('thumbs-up', text: t('application.title')), root_path, class: 'navbar-brand' %>
+  <%= fa_icon('bars lg fw inverse', data: { toggle: :sidebar }) %>
 </nav>
-
