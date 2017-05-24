@@ -1,10 +1,9 @@
-//= require turbolinks
 //= require jquery
 //= require jquery-ujs
 //= require tether
 //= require bootstrap/dist/js/bootstrap
 
-$(document).on('turbolinks:load', function() {
+$(document).on('ready', function() {
   $('[data-toggle="tooltip"]').tooltip();
 
   // Toggle sidebar
