@@ -3,9 +3,6 @@
 
 <div class="card" data-user-id="<%= user.id %>">
   <div class="card-block">
-    <%= image_tag(user.avatar, class: 'img-thumbnail float-right hidden-sm-down', alt: user.name, size: '100x100') %>
-    <%= image_tag(user.avatar, class: 'img-thumbnail float-right hidden-md-up', alt: user.name, size: '50x50') %>
-
     <h4 class="card-title"><%= user.name %></h4>
     <p class="card-text">
       <%= fa_icon('thumbs-up') %> <%= t(:rides_given_html, count: given) %> e <%= t(:rides_taken_html, count: taken).downcase %><br />

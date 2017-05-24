@@ -31,10 +31,6 @@ class User < ApplicationRecord
     end
   end
 
-  def avatar(size: 100)
-    "https://api.adorable.io/avatars/#{size}/#{email}"
-  end
-
   def notify(data = {})
     if device_token.present?
       push_notification(data)
