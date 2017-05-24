@@ -1,6 +1,6 @@
 <%= render @route.user %>
 
-<%= render @ride %>
+<%= render @ride.presence || @route.rides.new %>
 
 <hr>
 

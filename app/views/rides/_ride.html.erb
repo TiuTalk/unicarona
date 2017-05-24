@@ -4,10 +4,12 @@
   <% else %>
     <div class="alert alert-warning mt-2">Pedido de carona enviado para <%= ride.driver.first_name %>, por favor aguarde a resposta!</div>
   <% end %>
-<% else %>
+<% elsif signed_in? %>
   <%= simple_form_for(ride, remote: true, html: { class: 'text-center' }) do |f| %>
     <%= f.input :route_id, as: :hidden %>
     <%= f.submit "Pedir carona para #{ride.route.user.first_name}", class: 'card-link btn btn-primary' %>
   <% end %>
+<% else %>
+  <p class="text-center text-muted mt-3" style="font-size: .8em">Você precisa <%= link_to('fazer o login', sign_in_path) %> para poder pedir carona para <%= ride.route.user.first_name %>.</p>
 <% end %>
 

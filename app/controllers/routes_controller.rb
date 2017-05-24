@@ -24,8 +24,6 @@ class RoutesController < ApplicationController
 
     if signed_in?
       @ride = current_user.rides_taken.pending.where(route_id: @route.id).first_or_initialize
-    else
-      @ride = Ride.pending.where(route_id: @route.id).new
     end
   end
 

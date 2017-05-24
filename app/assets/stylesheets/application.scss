@@ -3,8 +3,9 @@
 @import "startbootstrap-simple-sidebar/css/simple-sidebar";
 @import "font-awesome";
 
+#page-content-wrapper { padding-left: 0; padding-right: 0 }
+
 // Header
-// .navbar { margin-bottom: 1em }
 .navbar-brand .fa { color: rgba(#000, .3) }
 
 // Flash messages
