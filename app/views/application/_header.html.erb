@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse bg-inverse flex-row align-items-center justify-content-between">
-  <%= link_to fa_icon('thumbs-up', text: t('application.title')), root_path, class: 'navbar-brand' %>
+<nav class="navbar navbar-inverse bg-inverse flex-row align-items-center justify-content-left" data-turbolinks-permanent>
   <%= fa_icon('bars lg fw inverse', data: { toggle: :sidebar }) %>
+  <%= link_to t('application.title'), root_path, class: 'navbar-brand ml-3' %>
 </nav>

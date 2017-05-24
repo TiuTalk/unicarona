@@ -4,6 +4,8 @@ pt-BR:
     header:
       sign_in: Entrar
       register: Criar conta
+    navbar:
+      my_routes: Minhas rotas
   pages:
     how_it_works:
       title: Como funciona?
