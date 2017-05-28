@@ -18,6 +18,23 @@ class Ride < ApplicationRecord
     state :accepted
     state :rejected
     state :completed
+    state :canceled
+
+    event :accept do
+      transitions from: :pending, to: :accepted
+    end
+
+    event :reject do
+      transitions from: :pending, to: :rejected
+    end
+
+    event :complete do
+      transitions from: :accepted, to: :completed
+    end
+
+    event :cancel do
+      transitions from: [:pending, :accepted], to: :canceled
+    end
   end
 
   def notify_driver

@@ -6,6 +6,7 @@ pt-BR:
       register: Criar conta
     navbar:
       my_routes: Minhas rotas
+      my_rides: Minhas caronas
   pages:
     how_it_works:
       title: Como funciona?
@@ -26,3 +27,10 @@ pt-BR:
     zero: Não pegou carona
     one: Pegou <b>uma</b> carona
     other: Pegou <b>%{count}</b> caronas
+  ride:
+    status:
+      pending: Pendente
+      accepted: Aceito
+      rejected: Rejeitado
+      completed: Finalizado
+      canceled: Cancelado

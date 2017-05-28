@@ -1,8 +1,8 @@
 <div class="sidebar-nav">
   <% if signed_in? %>
     <ul class="navbar-nav mr-auto">
+      <li class="nav-item"><%= link_to t('.my_rides'), rides_path, class: 'nav-link' %></li>
       <li class="nav-item"><%= link_to t('.my_routes'), routes_path, class: 'nav-link' %></li>
-      <%# <li class="nav-item"><%= link_to 'Minhas caronas', '#', class: 'nav-link' %1></li> %>
       <li class="nav-item"><%= link_to t('pages.how_it_works.title'), '#', class: 'nav-link' %></li>
     </ul>
 

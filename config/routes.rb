@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :routes, path: 'rotas' do
     match :search, path: 'busca', on: :collection, via: [:get, :post]
   end
-  resources :rides, path: 'caronas', only: [:create]
+  resources :rides, path: 'caronas', only: [:index, :show, :create]
 
   resources :phone_confirmations, path: 'telefone', only: [:new, :create] do
     post :confirm, on: :collection

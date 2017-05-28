@@ -1,0 +1,23 @@
+<% if @rides_taken.any? %>
+  <h5 class="card-title">Caronas</h5>
+  <%= render @rides_taken %>
+<% else %>
+  <div class="card">
+    <div class="card-block">
+      <%= render 'blank_slate', class: 'small', icon: 'thumbs-up', message: 'Você ainda não pegou nenhuma carona!', action: link_to('Busque uma carona', search_routes_path, class: 'btn btn-success') %>
+    </div>
+  </div>
+<% end %>
+
+<hr />
+
+<% if @rides_given.any? %>
+  <h5 class="card-title">Caronas dadas</h5>
+  <%= render @rides_given %>
+<% else %>
+  <div class="card">
+    <div class="card-block">
+      <%= render 'blank_slate', class: 'small', icon: 'location-arrow', message: 'Você ainda não deu carona!', action: link_to('Cadastre uma rota', routes_path, class: 'btn btn-success') %>
+    </div>
+  </div>
+<% end %>

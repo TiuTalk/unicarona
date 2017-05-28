@@ -5,6 +5,53 @@ RSpec.describe RidesController, type: :controller do
 
   before { sign_in_as(user) }
 
+  describe 'GET #index' do
+    let!(:rides_taken) { create_list(:ride, 2, passenger: user) }
+    let!(:rides_given) { create_list(:ride, 2, driver: user) }
+
+    it 'render the list of rides taken & given' do
+      get :index
+
+      expect(assigns(:rides_taken)).to match_array(rides_taken)
+      expect(assigns(:rides_given)).to match_array(rides_given)
+      expect(response).to be_ok
+    end
+  end
+
+  describe 'GET #index' do
+    context 'with ride taken' do
+      let(:ride) { create(:ride, passenger: user) }
+
+      it 'render the ride and respond with OK' do
+        get :show,  params: { id: ride.id }
+
+        expect(assigns(:ride)).to eq(ride)
+        expect(response).to be_ok
+      end
+    end
+
+    context 'with ride given' do
+      let(:ride) { create(:ride, driver: user) }
+
+      it 'render the ride and respond with OK' do
+        get :show,  params: { id: ride.id }
+
+        expect(assigns(:ride)).to eq(ride)
+        expect(response).to be_ok
+      end
+    end
+
+    context 'with invalid ride' do
+      let(:ride) { create(:ride) }
+
+      it 'redirect to home' do
+        get :show,  params: { id: ride.id }
+
+        expect(response).to redirect_to(root_path)
+      end
+    end
+  end
+
   describe 'POST #create' do
     let(:route) { create(:route) }
     let(:params) { { ride: { route_id: route.id } } }
