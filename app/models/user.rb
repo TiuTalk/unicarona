@@ -43,6 +43,11 @@ class User < ApplicationRecord
     name.strip.split(' ').first
   end
 
+  def whatsapp_url
+    formated_phone = Phonelib.parse(phone).international(false)
+    "https://api.whatsapp.com/send?phone=#{formated_phone}"
+  end
+
   private
 
   def normalize_phone

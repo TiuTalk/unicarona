@@ -1,5 +1,5 @@
 <% ride_given = ride.driver_id == current_user.id %>
-<div class="list-group-item list-group-item-action flex-column align-items-start">
+<div class="list-group-item list-group-item-action flex-column align-items-start" data-ride-id="<%= ride.id %>">
   <div class="d-flex w-100 justify-content-between">
     <%= content_tag(:h5, ride_given ? ride.passenger.name : ride.driver.name, class: 'mb-1') %>
     <small class="text-right"><%= ride_status_badge(ride) %></small>
@@ -17,11 +17,11 @@
       <%= link_to(fa_icon('thumbs-up', text: 'Aceitar'), '#', class: 'btn btn-success') if ride.may_accept? %>
       <%= link_to(fa_icon('thumbs-down', text: 'Recusar'), '#', class: 'btn btn-danger') if ride.may_reject? %>
       <%= link_to(fa_icon('user lg'), '#', class: 'btn btn-info') unless ride.completed? || ride.canceled? %>
-      <%= link_to(fa_icon('whatsapp lg'), '#', class: 'btn btn-success') unless ride.completed? || ride.canceled? %>
+      <%= link_to(fa_icon('whatsapp lg'), ride.passenger.whatsapp_url, class: 'btn btn-success') unless ride.completed? || ride.canceled? %>
     <% else %>
       <%= link_to(fa_icon('ban', text: 'Cancelar'), '#', class: 'btn btn-danger') if ride.may_cancel? %>
       <%= link_to(fa_icon('user lg'), '#', class: 'btn btn-info') unless ride.completed? || ride.canceled? %>
-      <%= link_to(fa_icon('whatsapp lg'), '#', class: 'btn btn-success') unless ride.completed? || ride.canceled? %>
+      <%= link_to(fa_icon('whatsapp lg'), ride.driver.whatsapp_url, class: 'btn btn-success') unless ride.completed? || ride.canceled? %>
     <% end %>
   </div>
 </div>
