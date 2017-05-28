@@ -45,7 +45,7 @@ class User < ApplicationRecord
 
   def whatsapp_url
     formated_phone = Phonelib.parse(phone).international(false)
-    "https://api.whatsapp.com/send?phone=#{formated_phone}"
+    "intent://send/#{formated_phone}#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end"
   end
 
   private
