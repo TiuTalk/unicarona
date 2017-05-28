@@ -1,6 +1,6 @@
 <%= render @route.user %>
 
-<%= render @ride.presence || @route.rides.new %>
+<%= render partial: 'rides/ask_ride', object: (@ride.presence || @route.rides.new), as: :ride %>
 
 <hr>
 
