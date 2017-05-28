@@ -40,6 +40,7 @@ pt-BR:
       accept: Carona aceita! Converse com o passageiro por WhatsApp :)
       reject: Pedido de carona rejeitado, o passageiro será avisado.
       cancel: Pedido cancelado, o motorista será avisado.
+      complete: Carona finalizada! Não se esqueça de avaliar a corrida :)
   notification:
     ride:
       created:

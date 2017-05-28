@@ -25,7 +25,7 @@ class RidesController < ApplicationController
 
   def update
     @event = params[:event].to_sym
-    allowed_events = current_user == @ride.driver ? %i(accept reject) : %i(cancel)
+    allowed_events = current_user == @ride.driver ? %i(accept reject complete) : %i(cancel complete)
 
     if @event.in?(allowed_events) && @ride.send("may_#{@event}?")
       @ride.send("#{@event}!")

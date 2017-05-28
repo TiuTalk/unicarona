@@ -32,7 +32,7 @@ class Ride < ApplicationRecord
       transitions from: :pending, to: :rejected, after: %i(notify_passenger)
     end
 
-    event :complete do
+    event :complete, guards: %i(created_30min_ago?) do
       transitions from: :accepted, to: :completed, after: %i(notify_driver notify_passenger)
     end
 
@@ -50,6 +50,10 @@ class Ride < ApplicationRecord
   end
 
   private
+
+  def created_30min_ago?
+    created_at <= 30.minutes.ago
+  end
 
   def notify_driver(notification = nil)
     notification ||= aasm.to_state.to_sym
