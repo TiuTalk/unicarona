@@ -16,7 +16,7 @@ class RidesController < ApplicationController
 
   def create
     @ride = current_user.rides_taken.pending.where(ride_params).first_or_initialize do |ride|
-      ride.save && ride.notify_driver
+      ride.save && ride.notify_driver_of_new_ride
       ride
     end
 

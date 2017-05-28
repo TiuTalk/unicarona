@@ -94,6 +94,9 @@ RSpec.describe RidesController, type: :controller do
       let(:ride) { create(:ride, passenger: user) }
 
       it 'render the ride and respond with OK' do
+        notification = { title: 'Pedido de carona cancelado', text: "Parece que #{ride.passenger.first_name} cancelou o pedido de carona para #{ride.route.destination}" }
+        expect_any_instance_of(User).to receive(:notify).with(notification)
+
         expect do
           put :update, params: { id: ride.id, event: :cancel }, format: :js
         end.to change { ride.reload.status}.from('pending').to('canceled')
@@ -107,6 +110,9 @@ RSpec.describe RidesController, type: :controller do
       let(:ride) { create(:ride, driver: user) }
 
       it 'render the ride and respond with OK' do
+        notification = { title: "#{ride.driver.first_name} vai te dar carona! :)", text: "Converse com #{ride.driver.first_name} para acertar os detalhes da sua carona para #{ride.route.destination}" }
+        expect_any_instance_of(User).to receive(:notify).with(notification)
+
         expect do
           put :update, params: { id: ride.id, event: :accept }, format: :js
         end.to change { ride.reload.status}.from('pending').to('accepted')

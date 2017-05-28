@@ -40,4 +40,29 @@ pt-BR:
       accept: Carona aceita! Converse com o passageiro por WhatsApp :)
       reject: Pedido de carona rejeitado, o passageiro será avisado.
       cancel: Pedido cancelado, o motorista será avisado.
+  notification:
+    ride:
+      created:
+        driver:
+          title: Pedido de carona
+          text: "%{passenger} pediu carona para %{destination}"
+      accepted:
+        passenger:
+          title: "%{driver} vai te dar carona! :)"
+          text: "Converse com %{driver} para acertar os detalhes da sua carona para %{destination}"
+      rejected:
+        passenger:
+          title: "%{driver} rejeitou sua carona! :("
+          text: "Que tal procurar outro motorista?"
+      completed:
+        driver:
+          title: Carona finalizada
+          text: "Obrigado por usar o Minha Carona! Não se esqueça de avaliar a carona! :)"
+        passenger:
+          title: Carona finalizada
+          text: "Obrigado por usar o Minha Carona! Não se esqueça de avaliar a carona! :)"
+      canceled:
+        driver:
+          title: Pedido de carona cancelado
+          text: "Parece que %{passenger} cancelou o pedido de carona para %{destination}"
 
