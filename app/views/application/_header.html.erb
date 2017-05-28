@@ -1,4 +1,18 @@
-<nav class="navbar navbar-inverse bg-inverse flex-row align-items-center justify-content-left" data-turbolinks-permanent>
+<nav class="navbar navbar-inverse bg-inverse flex-row align-items-center justify-content-between" data-turbolinks-permanent>
   <%= fa_icon('bars lg fw inverse', data: { toggle: :sidebar }) %>
   <%= link_to t('application.title'), root_path, class: 'navbar-brand ml-3' %>
+
+  <% if signed_in? %>
+    <% count = current_user.rides_taken.ongoing.count + current_user.rides_given.ongoing.count %>
+    <% if count > 0 %>
+      <%= link_to(rides_path) do %>
+        <%= fa_icon('bell lg fw inverse') %>
+        <sup class="badge badge-pill badge-warning"><%= count %></sup>
+      <% end %>
+    <% else %>
+      <div></div>
+    <% end %>
+  <% else %>
+    <div></div>
+  <% end %>
 </nav>

@@ -7,6 +7,13 @@
 
 // Header
 .navbar-brand .fa { color: rgba(#000, .3) }
+.navbar .badge-pill {
+  font-size: .6em;
+  padding: .3em .5em;
+  position: relative;
+  margin-left: -20px;
+  top: -10px;
+}
 
 // Flash messages
 .alert.alert-notice { @extend .alert-success }
