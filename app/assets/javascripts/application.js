@@ -13,6 +13,8 @@ function showToast(message) {
 }
 
 $(document).on('turbolinks:load', function() {
+  if (typeof Android !== 'undefined') { Android.updateDeviceToken(); }
+
   $('[data-toggle="tooltip"]').tooltip();
 
   // Toggle sidebar
