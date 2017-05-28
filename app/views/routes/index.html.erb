@@ -9,14 +9,7 @@
   <hr />
 
   <%= link_to 'Cadatrar rota', new_route_path, class: 'btn btn-success' %>
-
 <% else %>
-  <div class="row justify-content-md-center blank-slate">
-    <div class="col col-lg-5">
-      <%= fa_icon('location-arrow') %>
-      <p>Você ainda não cadastrou nenhuma rota!</p>
-      <%= link_to 'Cadastre sua primeira rota', new_route_path, class: 'btn btn-success' %>
-    </div>
-  </div>
+  <%= render 'blank_slate', icon: 'location-arrow', message: 'Você ainda não cadastrou nenhuma rota!', action: link_to('Cadastre sua primeira rota', new_route_path, class: 'btn btn-success') %>
 <% end %>
 
