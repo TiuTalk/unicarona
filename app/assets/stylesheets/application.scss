@@ -20,5 +20,10 @@
 
   .fa { font-size: 4em; margin-bottom: .3em; opacity: .5 }
   .btn { margin-top: .5em }
+
+  &.small {
+    margin: 2em 0;
+    .fa { font-size: 3.3em }
+  }
 }
 

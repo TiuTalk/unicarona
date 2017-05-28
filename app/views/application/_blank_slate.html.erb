@@ -1,4 +1,4 @@
-<div class="row justify-content-md-center blank-slate">
+<div class="row justify-content-md-center blank-slate <%= local_assigns[:class].presence %>">
   <div class="col col-lg-5">
     <%= fa_icon(icon) if local_assigns[:icon].present? %>
     <%= content_tag(:p, message) %>
