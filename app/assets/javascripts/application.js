@@ -5,7 +5,7 @@
 //= require bootstrap/dist/js/bootstrap
 
 function showToast(message) {
-  if (typeof variable !== 'undefined') {
+  if (typeof Android !== 'undefined') {
     Android.showToast(message);
   } else {
     alert(message);
