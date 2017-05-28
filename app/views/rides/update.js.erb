@@ -1,0 +1,3 @@
+$('[data-ride-id="<%= @ride.id %>"]').replaceWith("<%= j(render(@ride)) %>");
+
+Android.showToast("<%= t("toast.ride.#{@event}") %>");

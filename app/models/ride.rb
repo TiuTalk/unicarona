@@ -6,6 +6,10 @@ class Ride < ApplicationRecord
   belongs_to :passenger, class_name: 'User', inverse_of: :rides_taken
   belongs_to :route, inverse_of: :rides
 
+  # Scopes
+  scope :ongoing, -> { where(status: %i(pending accepted)) }
+  scope :non_pending, -> { where.not(status: :pending) }
+
   # Validations
   validates :driver, :passenger, :route, presence: true
 

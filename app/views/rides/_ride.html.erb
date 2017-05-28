@@ -14,14 +14,15 @@
 
   <div class="btn-group mt-2" role="group" aria-label="Basic example">
     <% if ride_given %>
-      <%= link_to(fa_icon('thumbs-up', text: 'Aceitar'), '#', class: 'btn btn-success') if ride.may_accept? %>
-      <%= link_to(fa_icon('thumbs-down', text: 'Recusar'), '#', class: 'btn btn-danger') if ride.may_reject? %>
-      <%= link_to(fa_icon('user lg'), '#', class: 'btn btn-info') unless ride.completed? || ride.canceled? %>
-      <%= link_to(fa_icon('whatsapp lg'), ride.passenger.whatsapp_url, target: :_blank, class: 'btn btn-success') unless ride.completed? || ride.canceled? %>
+      <%= link_to(fa_icon('thumbs-up', text: 'Aceitar'), ride, remote: true, method: :put, data: { params: 'event=accept' }, class: 'btn btn-success') if ride.may_accept? %>
+      <%= link_to(fa_icon('thumbs-down', text: 'Recusar'), ride, remote: true, method: :put, data: { params: 'event=reject' }, class: 'btn btn-danger') if ride.may_reject? %>
     <% else %>
-      <%= link_to(fa_icon('ban', text: 'Cancelar'), '#', class: 'btn btn-danger') if ride.may_cancel? %>
-      <%= link_to(fa_icon('user lg'), '#', class: 'btn btn-info') unless ride.completed? || ride.canceled? %>
-      <%= link_to(fa_icon('whatsapp lg'), ride.driver.whatsapp_url, target: :_blank, class: 'btn btn-success') unless ride.completed? || ride.canceled? %>
+      <%= link_to(fa_icon('ban', text: 'Cancelar'), ride, remote: true, method: :put, data: { params: 'event=cancel' }, class: 'btn btn-danger') if ride.may_cancel? %>
+    <% end %>
+
+    <% unless ride.completed? || ride.canceled? %>
+      <%= link_to(fa_icon('map lg'), ride.route, class: 'btn btn-info') %>
+      <%= link_to(fa_icon('whatsapp lg'), (ride_given ? ride.passenger : ride.driver).whatsapp_url, target: :_blank, class: 'btn btn-success') %>
     <% end %>
   </div>
 </div>

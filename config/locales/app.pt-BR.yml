@@ -34,3 +34,10 @@ pt-BR:
       rejected: Rejeitado
       completed: Finalizado
       canceled: Cancelado
+  toast:
+    ride:
+      created: Pedido de carona enviado, o motorista será avisado.
+      accept: Carona aceita! Converse com o passageiro por WhatsApp :)
+      reject: Pedido de carona rejeitado, o passageiro será avisado.
+      cancel: Pedido cancelado, o motorista será avisado.
+
