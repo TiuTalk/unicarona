@@ -4,6 +4,14 @@
 //= require tether
 //= require bootstrap/dist/js/bootstrap
 
+function showToast(message) {
+  if (typeof variable !== 'undefined') {
+    Android.showToast(message);
+  } else {
+    alert(message);
+  }
+}
+
 $(document).on('turbolinks:load', function() {
   $('[data-toggle="tooltip"]').tooltip();
 
