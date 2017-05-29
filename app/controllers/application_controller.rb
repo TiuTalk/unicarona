@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   include Clearance::Controller
   protect_from_forgery with: :exception
 
-  before_action :store_device_token, if: :signed_in?
+  before_action :store_device_token
   before_action :require_phone_confirmation, if: :signed_in?
 
   private
@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def store_device_token
-    current_user.update(device_token: session[:device_token]) if session[:device_token].present?
+    session[:device_token] = request.headers['HTTP_DEVICETOKEN'] if request.headers['HTTP_DEVICETOKEN'].present?
+    current_user.update(device_token: session[:device_token]) if signed_in? && session[:device_token].present?
   end
 end
