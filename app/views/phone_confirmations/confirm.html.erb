@@ -7,7 +7,7 @@
       <p>Um código foi enviado para seu telefone via SMS, por favor informe-o:</p>
 
       <%= simple_form_for(current_user, url: confirm_phone_confirmations_path, method: :post) do |f| %>
-        <%= f.input :phone_confirmation_code, placeholder: 'XXXXXX', input_html: { value: nil } %>
+        <%= f.input :phone_confirmation_code, as: :string, placeholder: 'XXXXXX', input_html: { value: nil } %>
 
         <div class="field is-grouped">
           <span class="control"><%= f.button :submit, 'Confirmar telefone', class: 'is-primary' %></span>
