@@ -72,6 +72,23 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, origin, 
   });
 }
 
+function fetchRoutesByLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      $.get('/', { latitude: pos.lat, longitude: pos.lng, format: 'js' });
+    }, function() {
+      console.log('FAIL');
+    });
+  } else {
+    console.log('ERROR');
+  }
+}
+
 function callFromActivity(method, message) {
   if (method == 'setDeviceToken') {
     var data = { token: message };

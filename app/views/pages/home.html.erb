@@ -10,8 +10,14 @@
 
 <hr />
 
-<p>Veja alguma rotas cadastradas recentemente...</p>
+<div data-routes-list>
+  <p>Veja alguma rotas cadastradas recentemente...</p>
 
-<div class="list-group">
-  <%= render @routes %>
+  <div class="list-group">
+    <%= render @routes %>
+  </div>
 </div>
+
+<script>
+fetchRoutesByLocation();
+</script>
