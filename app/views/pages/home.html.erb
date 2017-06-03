@@ -19,5 +19,7 @@
 </div>
 
 <script>
-fetchRoutesByLocation();
+$(document).on('turbolinks:load', function() {
+  fetchRoutesByLocation();
+});
 </script>
