@@ -32,6 +32,10 @@ gem 'aasm', '~> 4.12'
 gem 'twilio-ruby', '~> 4.13'
 gem 'rest-client', '~> 2.0'
 
+group :production do
+  gem 'sentry-raven', '~> 2.5'
+end
+
 group :development, :test do
   gem 'pry-rails', '~> 0.3'
   gem 'rspec-rails', '~> 3.5'
