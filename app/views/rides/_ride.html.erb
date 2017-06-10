@@ -2,16 +2,17 @@
 <% user = ride_given ? ride.passenger : ride.driver %>
 <div class="list-group-item list-group-item-action flex-column align-items-start" data-ride-id="<%= ride.id %>">
   <div class="d-flex w-100 justify-content-between">
-    <%= content_tag(:h5, user.name, class: 'mb-1') %>
+    <%= content_tag(:h6, user.name, class: 'mb-3') %>
     <small class="text-right"><%= ride_status_badge(ride) %></small>
   </div>
 
   <p class="mb-1">
     <%= fa_icon('map-marker', text: ride.route.origin) %><br />
-    <%= fa_icon('location-arrow', text: ride.route.destination) %>
+    <%= fa_icon('location-arrow', text: ride.route.destination) %><br />
+    <small class="text-muted"><%= localized_weekdays(ride.route, format: '%a').to_sentence %> - <%= l(ride.route.hour, format: '%H:%M') %></small>
   </p>
 
-  <small>Pedido <%= content_tag(:b, time_ago_in_words(ride.created_at)) %> atrás</small>
+  <small>Pedido <%= ride_given ? 'recebido' : 'enviado' %> <%= content_tag(:b, time_ago_in_words(ride.created_at)) %> atrás</small>
 
   <div class="btn-group mt-2" role="group" aria-label="Basic example">
     <% if ride_given %>

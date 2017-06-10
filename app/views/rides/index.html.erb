@@ -1,13 +1,15 @@
 <% if @rides_ongoing.any? %>
-  <h5 class="card-title">Pedidos de carona pendentes</h5>
-  <%= render @rides_ongoing %>
-  <hr />
+  <h5 class="card-title"><%= fa_icon('warning', text: 'Pedidos pendentes', class: 'text-muted') %></h5>
+  <div class="mb-5">
+    <%= render @rides_ongoing %>
+  </div>
 <% end %>
 
 <% if @rides_given.any? %>
-  <h5 class="card-title">Pedidos de carona recebidos</h5>
-  <%= render @rides_given %>
-  <hr />
+  <h5 class="card-title"><%= fa_icon('arrow-left', text: 'Pedidos recebidos', class: 'text-muted') %></h5>
+  <div class="mb-5">
+    <%= render @rides_given %>
+  </div>
 <% else %>
   <div class="card mb-2">
     <div class="card-block">
@@ -17,8 +19,10 @@
 <% end %>
 
 <% if @rides_taken.any? %>
-  <h5 class="card-title">Pedidos de carona enviados</h5>
-  <%= render @rides_taken %>
+  <h5 class="card-title"><%= fa_icon('arrow-right', text: 'Pedidos enviados', class: 'text-muted') %></h5>
+  <div class="mb-5">
+    <%= render @rides_taken %>
+  </div>
 <% else %>
   <div class="card">
     <div class="card-block">
