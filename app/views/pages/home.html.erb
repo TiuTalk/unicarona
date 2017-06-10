@@ -1,25 +1,15 @@
 <div class="row justify-content-md-center" style="text-align: center">
-  <div class="col-6">
-    <%= link_to fa_icon('thumbs-up', text: 'Buscar carona'), search_routes_path, class: 'btn btn-primary' %>
+  <div class="col-12 mt-5 mb-5">
+    <%= link_to(search_routes_path, class: 'text-success d-flex flex-column align-items-center') do %>
+      <%= fa_icon('thumbs-up 2x') %>
+      <%= content_tag(:button, 'Pedir carona', class: 'btn btn-success mt-3') %>
+    <% end %>
   </div>
 
-  <div class="col-6">
-    <%= link_to fa_icon('location-arrow', text: 'Dar carona'), routes_path, class: 'btn btn-success' %>
-  </div>
-</div>
-
-<hr />
-
-<div data-routes-list>
-  <p>Veja alguma rotas cadastradas recentemente...</p>
-
-  <div class="list-group">
-    <%= render @routes %>
+  <div class="col-12 mt-5">
+    <%= link_to(routes_path, class: 'text-primary d-flex flex-column align-items-center') do %>
+      <%= fa_icon('location-arrow 2x') %>
+      <%= content_tag(:button, 'Dar carona', class: 'btn btn-primary mt-3') %>
+    <% end %>
   </div>
 </div>
-
-<script>
-$(document).on('turbolinks:load', function() {
-  fetchRoutesByLocation();
-});
-</script>

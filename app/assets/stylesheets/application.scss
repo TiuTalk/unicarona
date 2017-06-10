@@ -34,3 +34,10 @@
   }
 }
 
+.pages_home {
+  #page-content-wrapper {
+    a { text-decoration: none }
+    .fa { font-size: 4em }
+    .button { cursor: pointer }
+  }
+}

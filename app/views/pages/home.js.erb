@@ -1,4 +1,0 @@
-<% if @routes.any? %>
-  $('[data-routes-list]').html('<p>Veja algumas rotas próximas de você...</p>');
-  $('[data-routes-list]').append('<div class="list-group"><%= j(render(@routes)) %></div>');
-<% end %>
