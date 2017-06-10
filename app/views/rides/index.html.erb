@@ -1,5 +1,5 @@
 <% if @rides_ongoing.any? %>
-  <h5 class="card-title"><%= fa_icon('warning', text: 'Pedidos pendentes', class: 'text-muted') %></h5>
+  <h5 class="card-title"><%= fa_icon('warning', text: 'Pedidos em andamento/pendentes', class: 'text-muted') %></h5>
   <div class="mb-5">
     <%= render @rides_ongoing %>
   </div>
