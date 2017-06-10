@@ -51,7 +51,7 @@ class User < ApplicationRecord
   private
 
   def normalize_phone
-    self.phone = Phonelib.parse(phone).national(false)
+    self.phone = Phonelib.parse(phone).national(false) || phone
   end
 
   def send_sms(message)
