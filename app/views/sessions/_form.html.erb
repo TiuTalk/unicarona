@@ -1,0 +1,12 @@
+<%= simple_form_for(:session, url: session_path) do |f| %>
+  <%= f.input :email, type: 'email' %>
+  <%= f.input :password %>
+
+  <div class="text-center">
+    <%= f.submit class: 'btn btn-primary' %>
+
+    <% if Clearance.configuration.allow_sign_up? %>
+      ou <%= link_to t(".sign_up"), sign_up_path, class: 'btn btn-secondary' %>
+    <% end %>
+  </div>
+<% end %>

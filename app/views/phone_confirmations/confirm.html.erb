@@ -1,18 +1,9 @@
-<div class="section">
-  <div class="columns">
-    <div class="column is-half is-offset-one-quarter">
-      <h3 class="title is-3">Confirmação de telefone</h3>
-      <h4 class="subtitle">Lorem ipsum</h4>
+<h3 class="title is-3">Confirmação de telefone</h3>
 
-      <p>Um código foi enviado para seu telefone via SMS, por favor informe-o:</p>
+<p>Por favor, insira o código recebido por SMS</p>
 
-      <%= simple_form_for(current_user, url: confirm_phone_confirmations_path, method: :post) do |f| %>
-        <%= f.input :phone_confirmation_code, as: :string, placeholder: 'XXXXXX', input_html: { value: nil } %>
+<%= simple_form_for(current_user, url: confirm_phone_confirmations_path, method: :post) do |f| %>
+  <%= f.input :phone_confirmation_code, as: :string, label: false, placeholder: 'Código receibod por SMS (XXXXXX)', input_html: { value: nil } %>
+  <%= f.button :submit, 'Verificar', class: 'btn btn-primary' %>
+<% end %>
 
-        <div class="field is-grouped">
-          <span class="control"><%= f.button :submit, 'Confirmar telefone', class: 'is-primary' %></span>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</div>

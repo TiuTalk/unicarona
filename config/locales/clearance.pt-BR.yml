@@ -39,9 +39,9 @@ pt-BR:
   sessions:
     form:
       forgot_password: Esqueceu sua senha?
-      sign_up: Cadastre-se
+      sign_up: Criar conta
     new:
-      title: Entre
+      title: Acesse sua conta
   users:
     new:
       title: Cadastre-se

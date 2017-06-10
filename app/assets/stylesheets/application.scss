@@ -16,7 +16,7 @@
 }
 
 // Flash messages
-.alert.alert-notice { @extend .alert-success }
+.alert.alert-notice { @extend .alert-warning }
 .alert.alert-alert { @extend .alert-warning }
 
 // Blank slate

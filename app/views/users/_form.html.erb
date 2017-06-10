@@ -1,6 +1,11 @@
-<%= f.input :name %>
-<%= f.input :email %>
+<%= simple_form_for(user) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :email %>
 
-<%= f.input :password, required: true %>
-<%= f.input :password_confirmation, required: true, label: 'Repita a senha' %>
+  <%= f.input :password, required: true %>
+  <%= f.input :password_confirmation, required: true, label: 'Repita a senha' %>
 
+  <div class="text-center">
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
