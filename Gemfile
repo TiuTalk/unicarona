@@ -11,8 +11,8 @@ gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
 
 # Assets
-gem 'sass-rails', '~> 5.0.6'
-gem 'uglifier', '>= 1.3.0'
+gem 'sass-rails', '~> 5.0'
+gem 'uglifier', '~> 1.3'
 gem 'turbolinks', '~> 5'
 gem 'font-awesome-rails', '~> 4.7'
 
@@ -21,7 +21,7 @@ gem 'responders', '~> 2.4'
 
 # Models
 gem 'phonelib', '~> 0.6'
-gem 'simple_form', github: 'elsurudo/simple_form', branch: 'rails-5.1.0'
+gem 'simple_form', '~> 3.5'
 gem 'clearance', '~> 1.16'
 gem 'geocoder', '~> 1.4'
 gem 'factory_girl_rails', '~> 4.8'
