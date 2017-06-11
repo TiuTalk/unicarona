@@ -14,7 +14,7 @@
 
   <small>Pedido <%= ride_given ? 'recebido' : 'enviado' %> <%= content_tag(:b, time_ago_in_words(ride.created_at)) %> atrás</small>
 
-  <div class="btn-group mt-2" role="group" aria-label="Basic example">
+  <div class="btn-group mt-2" role="group">
     <% if ride_given %>
       <%= link_to(fa_icon('check', text: 'Finalizar'), ride, remote: true, method: :put, data: { disable_with: 'Finalizando...', params: 'event=complete' }, class: 'btn btn-success btn-sm') if ride.may_complete? %>
       <%= link_to(fa_icon('thumbs-up', text: 'Aceitar'), ride, remote: true, method: :put, data: { disable_with: 'Aceitando...', params: 'event=accept' }, class: 'btn btn-success btn-sm') if ride.may_accept? %>
@@ -27,7 +27,7 @@
     <% if ride.ongoing? %>
       <%= link_to(fa_icon('map lg'), ride.route, class: 'btn btn-info btn-sm') %>
       <%= link_to(fa_icon('whatsapp lg'), user.whatsapp_url, target: :_blank, class: 'btn btn-success btn-sm') %>
-      <%= link_to(fa_icon('phone lg'), "tel:#{user.formatted_phone}", target: :_blank, class: 'btn btn-success btn-sm') %>
+      <%= link_to(fa_icon('phone lg'), "tel:+#{user.formatted_phone}", target: :_blank, class: 'btn btn-success btn-sm') %>
     <% end %>
   </div>
 </div>
