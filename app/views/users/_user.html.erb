@@ -5,7 +5,7 @@
   <div class="card-block">
     <h4 class="card-title"><%= user.name %></h4>
     <p class="card-text">
-      <%= fa_icon('thumbs-up') %> <%= t(:rides_given_html, count: given) %> e <%= t(:rides_taken_html, count: taken).downcase %><br />
+      <%= fa_icon('thumbs-up') %> <%= t(:rides_given_html, count: given) %> e <%= t(:rides_taken_html, count: taken).downcase.html_safe %><br />
       <%= fa_icon('calendar-o') %> Usuário(a) desde <%= l(user.created_at.to_date, format: :short) %><br />
     </p>
   </div>
