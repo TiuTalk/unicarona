@@ -67,7 +67,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay, origin, 
     if (status === 'OK') {
       directionsDisplay.setDirections(response);
     } else {
-      window.alert('Directions request failed due to ' + status);
+      $('[data-map-origin]').remove();
     }
   });
 }
