@@ -7,6 +7,7 @@ pt-BR:
     navbar:
       my_routes: Minhas rotas
       my_rides: Minhas caronas
+      recent_routes: Novas rotas
   pages:
     how_it_works:
       title: Como funciona?

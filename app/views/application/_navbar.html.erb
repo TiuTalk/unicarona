@@ -3,15 +3,16 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item"><%= link_to t('.my_rides'), rides_path, class: 'nav-link' %></li>
       <li class="nav-item"><%= link_to t('.my_routes'), routes_path, class: 'nav-link' %></li>
-      <li class="nav-item"><%= link_to t('pages.how_it_works.title'), '#', class: 'nav-link' %></li>
+      <li class="nav-item"><%= link_to t('.recent_routes'), recent_routes_path, class: 'nav-link' %></li>
     </ul>
 
     <ul class="navbar-nav">
-      <li class="nav-item"><%= content_tag(:span, current_user.name, class: 'nav-link') %></li>
+      <li class="nav-item"><%= content_tag(:span, current_user.name, class: 'nav-link', style: 'color: gray; text-transform: uppercase; font-size: .8em; font-weight: bold') %></li>
       <li class="nav-item"><%= link_to t('layouts.application.sign_out'), sign_out_path, method: :delete, class: 'nav-link' %></li>
     </ul>
   <% else %>
     <ul class="navbar-nav ml-auto">
+      <li class="nav-item"><%= link_to t('.recent_routes'), recent_routes_path, class: 'nav-link' %></li>
       <li class="nav-item"><%= link_to t('helpers.submit.user.create'), sign_up_path, class: 'nav-link' %></li>
       <li class="nav-item"><%= link_to t('layouts.application.sign_in'), sign_in_path, class: 'nav-link' %></li>
     </ul>

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :routes, path: 'rotas' do
     match :search, path: 'busca', on: :collection, via: [:get, :post]
+    get :recent, on: :collection
   end
   resources :rides, path: 'caronas', only: [:index, :show, :create, :update]
 

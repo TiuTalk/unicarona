@@ -1,5 +1,5 @@
 class RoutesController < ApplicationController
-  before_action :require_login, except: [:show]
+  before_action :require_login, except: [:show, :recent]
   before_action :set_route, only: [:edit, :update, :destroy]
 
   rescue_from ActiveRecord::RecordNotFound do
@@ -55,6 +55,11 @@ class RoutesController < ApplicationController
   def destroy
     @route.destroy
     redirect_to routes_url, notice: 'Rota removida com sucesso!'
+  end
+
+  def recent
+    @routes = Route.order(created_at: :desc).limit(10)
+    @routes = @routes.where.not(user: current_user) if signed_in?
   end
 
   private
