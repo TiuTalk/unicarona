@@ -1,6 +1,6 @@
 <%= simple_form_for(:session, url: session_path) do |f| %>
   <%= f.input :email, type: 'email' %>
-  <%= f.input :password %>
+  <%= f.input :password, label: 'Senha' %>
 
   <div class="text-center">
     <%= f.submit class: 'btn btn-primary' %>
