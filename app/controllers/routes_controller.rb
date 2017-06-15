@@ -58,7 +58,7 @@ class RoutesController < ApplicationController
   end
 
   def recent
-    @routes = Route.order(created_at: :desc).limit(10)
+    @routes = Route.enabled.order(created_at: :desc).limit(10)
     @routes = @routes.where.not(user: current_user) if signed_in?
   end
 
