@@ -63,6 +63,8 @@ class User < ApplicationRecord
 
     client = Twilio::REST::Client.new
     client.messages.create(from: from, to: to, body: message)
+  rescue Twilio::REST::RequestError
+    # Do nothing
   end
 
   def push_notification(data = {})
