@@ -67,7 +67,13 @@ class Ride < ApplicationRecord
 
   def notify(user_type, notification)
     scope = "notification.ride.#{notification}.#{user_type}"
-    params = { passenger: passenger.first_name, driver: driver.first_name, origin: route.origin, destination: route.destination }
+    params = {
+      passenger: passenger.first_name,
+      driver: driver.first_name,
+      origin: route.origin,
+      destination: route.destination,
+      app: I18n.t('application.title')
+    }
 
     notification = {
       title: I18n.t('title', { scope: scope }.merge(params)),

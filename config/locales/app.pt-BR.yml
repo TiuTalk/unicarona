@@ -1,6 +1,6 @@
 pt-BR:
   application:
-    title: Minha Carona
+    title: Vai Também?
     header:
       sign_in: Entrar
       register: Criar conta
@@ -59,10 +59,10 @@ pt-BR:
       completed:
         driver:
           title: Carona finalizada
-          text: "Obrigado por usar o Minha Carona! Não se esqueça de avaliar a carona! :)"
+          text: "Obrigado por usar o %{app}! Não se esqueça de avaliar a carona! :)"
         passenger:
           title: Carona finalizada
-          text: "Obrigado por usar o Minha Carona! Não se esqueça de avaliar a carona! :)"
+          text: "Obrigado por usar o %{app}! Não se esqueça de avaliar a carona! :)"
       canceled:
         driver:
           title: Pedido de carona cancelado

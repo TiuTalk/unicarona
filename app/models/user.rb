@@ -18,7 +18,8 @@ class User < ApplicationRecord
     confirmation_code = SecureRandom.hex(3).upcase
 
     if update(phone_confirmation_code: confirmation_code)
-      message = "Minha Carona: Utilize o código #{confirmation_code} para confirmar seu telefone"
+      title = I18n.t("application.title")
+      message = "#{title}: Utilize o código #{confirmation_code} para confirmar seu telefone"
       send_sms(message)
     end
   end
